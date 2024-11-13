@@ -1,0 +1,3167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Flow State Painting - Premium painting services from Tweed Heads to Evans Head. Specializing in new homes and repaints with meticulous attention to detail.">
+    <title>Flow State Painting | Premium Painting Services</title>
+    
+    <!-- Preload critical assets -->
+    <link rel="preload" as="image" href="https://images.unsplash.com/photo-1562259949-e8e7689d7828?q=80&w=2000" fetchpriority="high">
+    <link rel="preload" as="image" href="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=2000" fetchpriority="high">
+    
+    <!-- External Resources -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/locomotive-scroll/4.1.4/locomotive-scroll.min.css">
+    
+    <style>
+        /* Core Variables */
+        :root {
+            --fsp-purple-light: #8B7AB0;
+            --fsp-purple-dark: #553B8B;
+            --fsp-blue: #553B8B;
+            --fsp-yellow: #E6C87A;
+            --fsp-cream: #F5F5DC;
+            --fsp-black: #000000;
+            --fsp-dark-gray: #121212;
+            --fsp-purple-gradient: linear-gradient(
+                to bottom,
+                var(--fsp-purple-light),
+                var(--fsp-purple-dark)
+            );
+            
+            /* Typography Scale */
+            --h1: clamp(3.5rem, 8vw, 6rem);
+            --h2: clamp(2.5rem, 6vw, 4rem);
+            --h3: clamp(2rem, 4vw, 3rem);
+            --body: clamp(1rem, 2vw, 1.2rem);
+            
+            /* Spacing Scale */
+            --space-xs: clamp(0.75rem, 1vw, 1rem);
+            --space-sm: clamp(1rem, 2vw, 1.5rem);
+            --space-md: clamp(2rem, 4vw, 3rem);
+            --space-lg: clamp(3rem, 6vw, 4.5rem);
+            --space-xl: clamp(4rem, 8vw, 6rem);
+        }
+
+        /* Reset & Base Styles */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+            background: var(--fsp-black);
+            color: var(--fsp-cream);
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+.top-bar {
+    background: var(--fsp-purple-dark);
+    height: 40px;
+    position: relative;
+    z-index: 101;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.top-bar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        rgba(255, 255, 255, 0.05) 25%, 
+        transparent 25%, 
+        transparent 50%, 
+        rgba(255, 255, 255, 0.05) 50%, 
+        rgba(255, 255, 255, 0.05) 75%, 
+        transparent 75%, 
+        transparent);
+    background-size: 20px 20px;
+    opacity: 0.1;
+    animation: moveGradient 30s linear infinite;
+}
+
+@keyframes moveGradient {
+    0% { background-position: 0 0; }
+    100% { background-position: 40px 0; }
+}
+
+.top-bar-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+.top-bar-contact {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.top-bar-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--fsp-cream);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.top-bar-link i {
+    font-size: 0.8rem;
+    color: white;
+    transition: transform 0.3s ease;
+}
+
+.top-bar-link:hover {
+    color: var(--fsp-blue);
+}
+
+.top-bar-link:hover i {
+    transform: scale(1.2);
+}
+
+.top-bar-social {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.top-bar-social-link {
+    width: 26px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    color: var(--fsp-cream);
+    text-decoration: none;
+    font-size: 0.8rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.top-bar-social-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    transition: transform 0.6s ease;
+}
+
+.top-bar-social-link:hover {
+    background: var(--fsp-blue);
+    transform: translateY(-2px);
+}
+
+.top-bar-social-link:hover::before {
+    transform: translateX(200%);
+}
+
+/* Adjust main nav position */
+.nav {
+    top: 40px;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .top-bar {
+        height: auto;
+        padding: 0.5rem 0;
+    }
+
+    .top-bar-content {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .top-bar-contact {
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+    }
+
+    /* Adjust main nav position for mobile */
+    .nav {
+        top: 0;
+    }
+
+    .top-bar {
+        display: none; /* Optional: hide on mobile */
+    }
+}
+
+/* Add smooth transition for the main nav when scrolling */
+.nav {
+    transition: all 0.3s ease;
+}
+
+.nav.scrolled {
+    top: 0; /* Adjust nav to top when scrolled */
+}
+        /* Loader Animation */
+      /* Advanced Component Styles */
+    .loading-screen {
+        position: fixed;
+        inset: 0;
+        background: var(--fsp-neutral-900);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        opacity: 1;
+        visibility: visible;
+        transition: opacity 0.5s ease, visibility 0.5s;
+    }
+
+    .loading-content {
+        position: relative;
+        width: 300px;
+        height: 300px;
+    }
+
+    .loading-spinner {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100px;
+        height: 100px;
+    }
+
+    .loading-spinner::before,
+    .loading-spinner::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        border: 3px solid transparent;
+        border-top-color: var(--fsp-primary);
+    }
+
+    .loading-spinner::before {
+        animation: spin 1.5s linear infinite;
+    }
+
+    .loading-spinner::after {
+        border-top-color: var(--fsp-accent);
+        animation: spin 2s linear infinite reverse;
+    }
+
+    @keyframes spin {
+        100% { transform: rotate(360deg); }
+    }
+
+    .loading-logo {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 120px;
+        height: auto;
+        opacity: 0;
+        animation: logoReveal 0.5s ease forwards 0.5s;
+    }
+
+    @keyframes logoReveal {
+        from {
+            opacity: 0;
+            transform: translate(-50%, -30%);
+        }
+        to {
+            opacity: 1;
+            transform: translate(-50%, -50%);
+        }
+    }
+
+
+        /* Navigation */
+        .nav {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 2rem;
+            z-index: 100;
+            background:transparent;
+            transition: all 0.3s ease;
+        }
+
+        .nav.scrolled {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 1rem 2rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: -3%;
+        }
+
+        .nav-logo {
+            width: 150px;
+            height: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+background: var(--fsp-purple-dark);
+transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .hero-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: scale(1.1);
+            animation: heroZoom 20s linear infinite alternate;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                to bottom,
+                rgba(0,0,0,0.4),
+                rgba(0,0,0,0.8)
+            );
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            height: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .hero-title {
+            font-size: var(--h1);
+            font-weight: 700;
+            line-height: 1.1;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease forwards 0.5s;
+        }
+
+        .hero-subtitle {
+            font-size: var(--h3);
+            margin-top: 2rem;
+            max-width: 600px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease forwards 0.7s;
+        }
+
+        .hero-cta {
+            margin-top: 3rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease forwards 0.9s;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--fsp-purple-dark);
+            color: var(--fsp-cream);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: var(--fsp-purple-light);
+            transform: translateY(-2px);
+        }
+
+     
+        /* Projects Section */
+        .projects {
+            padding: var(--space-xl) 0;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .project-card {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .project-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .project-card:hover .project-image {
+            transform: scale(1.1);
+        }
+
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+
+        /* Contact Section */
+        .contact {
+    padding: 120px 24px;
+    background: var(--fsp-black);
+}
+
+.contact-container {
+    max-width: 680px;
+    margin: 0 auto;
+}
+
+.contact-title {
+    font-size: 32px;
+    font-weight: 400;
+    color: var(--fsp-cream);
+    margin-bottom: 80px;
+    text-align: center;
+}
+
+.contact-wrapper {
+    position: relative;
+}
+
+.contact-options {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 60px;
+}
+
+.contact-link {
+    text-decoration: none;
+    flex: 1;
+    padding: 32px;
+    background: rgba(255,255,255,0.02);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.contact-link:hover {
+    background: rgba(255,255,255,0.04);
+}
+
+.link-label {
+    display: block;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 8px;
+}
+
+.link-value {
+    display: block;
+    color: var(--fsp-cream);
+    font-size: 18px;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.input-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.minimal-input {
+    width: 100%;
+    padding: 16px 0;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    color: var(--fsp-cream);
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.minimal-input::placeholder {
+    color: rgba(255,255,255,0.4);
+}
+
+.minimal-input:focus {
+    outline: none;
+    border-color: var(--fsp-cream);
+}
+
+select.minimal-input {
+    appearance: none;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l4 4 4-4' stroke='rgba(255,255,255,0.4)' stroke-width='1' fill='none'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right center;
+}
+
+textarea.minimal-input {
+    resize: none;
+    min-height: 120px;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 4px;
+    padding: 16px;
+    margin-top: 24px;
+}
+
+.submit-btn {
+    align-self: flex-start;
+    background: transparent;
+    border: none;
+    color: var(--fsp-cream);
+    font-size: 16px;
+    padding: 16px 0;
+    margin-top: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-arrow {
+    font-size: 24px;
+    transition: transform 0.3s ease;
+}
+
+.submit-btn:hover .btn-arrow {
+    transform: translateX(8px);
+}
+
+@media (max-width: 768px) {
+    .contact {
+        padding: 80px 24px;
+    }
+
+    .contact-options {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .input-row {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-title {
+        font-size: 24px;
+        margin-bottom: 60px;
+    }
+}
+        /* Animations */
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes heroZoom {
+            from { transform: scale(1); }
+            to { transform: scale(1.1); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        /* Enhanced Services Section */
+    .services {
+        position: relative;
+        background: linear-gradient(
+            to bottom,
+            var(--fsp-dark-gray),
+            var(--fsp-black)
+        );
+        overflow: hidden;
+        
+    }
+
+    .services::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('https://images.unsplash.com/photo-1567225557594-88d73e55f2cb?q=80&w=2000') center/cover;
+        opacity: 0.1;
+        z-index: 1;
+    }
+
+    .services-content {
+        position: relative;
+        z-index: 2;
+        padding-bottom: 10%;
+    }
+
+    .section-title {
+        font-size: var(--h2);
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: var(--space-lg);
+        position: relative;
+        padding-bottom: 1%;
+        margin-top: 16px;
+        
+    }
+
+    .section-title::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 4px;
+        background: var(--fsp-purple-gradient);
+        border-radius: 2px;
+    }
+
+    .service-card {
+        position: relative;
+        background: rgba(255,255,255,0.03);
+        border: 2px solid var(--fsp-purple-gradient);
+        padding: var(--space-lg);
+        border-radius: 12px;
+        overflow: hidden;
+        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        border: 2px solid var(--fsp-purple-dark);
+    }
+    
+    .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 2rem;
+        padding: 0 var(--space-lg);
+    }
+
+    .service-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--fsp-purple-gradient);
+        opacity: 0;
+        z-index: 1;
+        transition: opacity 0.6s ease;
+    }
+
+    .service-card:hover {
+        transform: translateY(-15px);
+        border-color: var(--fsp-blue);
+    }
+
+    .service-card:hover::before {
+        opacity: 0.1;
+    }
+
+    .service-content {
+        position: relative;
+        z-index: 2;
+    }
+
+    .service-icon {
+        font-size: 3rem;
+        background: var(--fsp-purple-gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: var(--space-md);
+        transition: transform 0.4s ease;
+    }
+
+    .service-card:hover .service-icon {
+        transform: scale(1.2);
+    }
+
+    .service-title {
+        font-size: var(--h3);
+        margin-bottom: var(--space-sm);
+        color: var(--fsp-cream);
+    }
+
+    .service-description {
+        color: rgba(255,255,255,0.8);
+        line-height: 1.8;
+    }
+
+    /* Enhanced Gallery Section */
+    .gallery {
+        background: var(--fsp-black);
+        padding: var(--space-xl) 0;
+    }
+
+    .gallery-header {
+        text-align: center;
+        margin-bottom: var(--space-xl);
+    }
+
+    .gallery-filters {
+        display: flex;
+        justify-content: center;
+        gap: var(--space-sm);
+        margin-top: var(--space-lg);
+    }
+
+   
+    .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 2rem;
+        padding: 0 var(--space-lg);
+    }
+
+    .gallery-item {
+        position: relative;
+        aspect-ratio: 16/9;
+        overflow: hidden;
+        border-radius: 12px;
+        cursor: pointer;
+    }
+
+    .gallery-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transform: scale(1.1);
+        transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .gallery-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.7);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: var(--space-md);
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .gallery-item:hover .gallery-img {
+        transform: scale(1);
+    }
+
+    .gallery-item:hover .gallery-overlay {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .gallery-title {
+        font-size: 1.5rem;
+        color: var(--fsp-cream);
+        margin-bottom: 0.5rem;
+    }
+
+    .gallery-category {
+        color: var(--fsp-blue);
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    /* Enhanced Process Section */
+    .process {
+    padding: 120px 0;
+    background: linear-gradient(180deg, var(--fsp-black) 0%, var(--fsp-dark-gray) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.process::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url('/path-to-your-subtle-pattern.png') repeat;
+    opacity: 0.02;
+    pointer-events: none;
+}
+
+.process-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 24px;
+    position: relative;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 48px;
+    font-weight: 300;
+    letter-spacing: -0.5px;
+    color: ;
+    margin-bottom: 16px;
+}
+
+.title-accent {
+    display: block;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--fsp-blue);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+}
+
+.process-subtitle {
+    text-align: center;
+    color: rgba(245, 245, 220, 0.7);
+    max-width: 600px;
+    margin: 0 auto 80px;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.timeline {
+    position: relative;
+    padding: 40px 0;
+}
+
+.timeline-progress {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(180deg, 
+        rgba(66, 183, 231, 0) 0%,
+        rgba(66, 183, 231, 0.3) 15%,
+        rgba(66, 183, 231, 0.3) 85%,
+        rgba(66, 183, 231, 0) 100%
+    );
+    top: 0;
+}
+
+.timeline-item {
+    width: 50%;
+    margin: 0 0 120px;
+    position: relative;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease;
+}
+
+.timeline-item.animated {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.timeline-item.left {
+    padding-right: 80px;
+}
+
+.timeline-item.right {
+    margin-left: 50%;
+    padding-left: 80px;
+}
+
+.timeline-content {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(66, 183, 231, 0.1);
+    border-radius: 16px;
+    padding: 40px;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.timeline-content:hover {
+    transform: translateY(-5px);
+    border-color: rgba(66, 183, 231, 0.3);
+}
+
+.step-number {
+    position: absolute;
+    top: 40px;
+    width: 60px;
+    height: 60px;
+    background: var(--fsp-blue);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--fsp-cream);
+}
+
+.left .step-number {
+    right: -110px;
+}
+
+.right .step-number {
+    left: -110px;
+}
+
+.content-wrapper h3 {
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--fsp-cream);
+    margin-bottom: 16px;
+    letter-spacing: -0.5px;
+}
+
+.content-wrapper p {
+    color: rgba(245, 245, 220, 0.7);
+    line-height: 1.6;
+    margin-bottom: 24px;
+}
+
+.timeline-features {
+    list-style: none;
+    padding: 0;
+}
+
+.timeline-features li {
+    color: rgba(245, 245, 220, 0.7);
+    margin-bottom: 8px;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.timeline-features li::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: var(--fsp-blue);
+    border-radius: 50%;
+    margin-right: 12px;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .process {
+        padding: 80px 0;
+    }
+
+    .section-title {
+        font-size: 32px;
+    }
+
+    .process-subtitle {
+        font-size: 16px;
+        margin-bottom: 60px;
+        padding: 0 24px;
+    }
+
+    .timeline-progress {
+        left: 30px;
+    }
+
+    .timeline-item {
+        width: 100%;
+        margin: 0 0 60px !important;
+        padding: 0 0 0 60px !important;
+    }
+
+    .timeline-item.right {
+        margin-left: 0;
+    }
+
+    .step-number {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+        left: 10px !important;
+        right: auto !important;
+        top: 20px;
+    }
+
+    .timeline-content {
+        padding: 24px;
+    }
+
+    .content-wrapper h3 {
+        font-size: 20px;
+        margin-bottom: 12px;
+    }
+
+    .content-wrapper p {
+        font-size: 15px;
+        margin-bottom: 16px;
+    }
+
+    .timeline-features li {
+        font-size: 14px;
+    }
+}
+
+/* Tablet Optimization */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .timeline-item.left {
+        padding-right: 60px;
+    }
+
+    .timeline-item.right {
+        padding-left: 60px;
+    }
+
+    .step-number {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+    }
+
+    .left .step-number {
+        right: -85px;
+    }
+
+    .right .step-number {
+        left: -85px;
+    }
+}
+
+
+.cta-impact {
+    position: relative;
+    padding: 120px 0;
+    background: #000;
+    overflow: hidden;
+    color: #fff;
+}
+
+.cta-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('https://images.unsplash.com/photo-1562259949-e8e7689d7828?q=80&w=2000');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    opacity: 0.2;
+    filter: contrast(120%) grayscale(20%);
+}
+
+.cta-container {
+    position: relative;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 32px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+}
+
+/* Left Column Styles */
+.cta-value {
+    padding-right: 40px;
+}
+
+.value-metrics {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 48px;
+}
+
+.metric {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.metric-value {
+    font-size: 48px;
+    font-weight: 200;
+    letter-spacing: -0.02em;
+    color: var(--fsp-purple-light);
+    line-height: 1;
+}
+
+.metric-label {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.6);
+    letter-spacing: 0.5px;
+}
+
+.metric-divider {
+    width: 1px;
+    height: 60px;
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+}
+
+.value-headline {
+    font-size: 56px;
+    font-weight: 300;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    margin-bottom: 24px;
+    background: linear-gradient(to right, #fff, rgba(255,255,255,0.8));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.value-description {
+    font-size: 18px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.7);
+    max-width: 500px;
+}
+
+/* Right Column Styles */
+.action-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 48px;
+    backdrop-filter: blur(20px);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.action-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.card-label {
+    display: inline-block;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--fsp-purple-light);
+    margin-bottom: 16px;
+}
+
+.card-headline {
+    font-size: 32px;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    margin-bottom: 16px;
+    color: #fff;
+}
+
+.card-description {
+    font-size: 16px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 32px;
+}
+
+.action-features {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 40px;
+}
+
+.feature {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.feature svg {
+    color: var(--fsp-purple-light);
+    flex-shrink: 0;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 16px;
+}
+
+.btn-primary {
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: var(--fsp-purple-dark);
+    color: #fff;
+    padding: 16px 32px;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: var(--fsp-purple-light);
+    transform: translateY(-2px);
+}
+
+.btn-primary svg {
+    transition: transform 0.3s ease;
+}
+
+.btn-primary:hover svg {
+    transform: translateX(4px);
+}
+
+.btn-secondary {
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: transparent;
+    color: #fff;
+    padding: 16px 32px;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: translateY(-2px);
+}
+
+@media (max-width: 1024px) {
+    .cta-container {
+        grid-template-columns: 1fr;
+        gap: 60px;
+    }
+
+    .cta-value {
+        padding-right: 0;
+        text-align: center;
+    }
+
+    .value-metrics {
+        justify-content: center;
+    }
+
+    .value-description {
+        margin: 0 auto;
+    }
+
+    .value-headline {
+        font-size: 48px;
+    }
+}
+
+@media (max-width: 768px) {
+    .cta-impact {
+        padding: 80px 0;
+    }
+
+    .action-card {
+        padding: 32px;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+    }
+
+    .value-headline {
+        font-size: 36px;
+    }
+
+    .metric-value {
+        font-size: 36px;
+    }
+}
+
+.service-area {
+    padding: 120px 0;
+    background: var(--fsp-black);
+    color: var(--fsp-cream);
+}
+
+.service-area-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.area-map {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    aspect-ratio: 4/3;
+}
+
+.map-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.area-card {
+    padding: 48px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    transition: all 0.3s ease;
+}
+
+.area-card:hover {
+    border-color: var(--fsp-purple-dark);
+}
+
+.area-card h2 {
+    font-size: 32px;
+    font-weight: 300;
+    margin-bottom: 8px;
+    color: var(--fsp-cream);
+}
+
+.area-subtitle {
+    color: rgba(245, 245, 220, 0.7);
+    margin-bottom: 32px;
+}
+
+.area-list {
+    display: grid;
+    gap: 32px;
+    margin-bottom: 40px;
+}
+
+.area-group h3 {
+    color: var(--fsp-purple-dark);
+    font-size: 18px;
+    margin-bottom: 16px;
+    letter-spacing: 0.5px;
+}
+
+.area-group ul {
+    list-style: none;
+    display: grid;
+    gap: 12px;
+}
+
+.area-group li {
+    color: rgba(245, 245, 220, 0.8);
+}
+
+.area-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--fsp-cream);
+    text-decoration: none;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.area-cta:hover {
+    color: var(--fsp-purple-dark);
+}
+
+.area-cta:hover .arrow {
+    transform: translateX(8px);
+}
+
+.arrow {
+    transition: transform 0.3s ease;
+}
+
+@media (max-width: 1024px) {
+    .service-area {
+        padding: 80px 0;
+    }
+
+    .service-area-container {
+        gap: 48px;
+    }
+
+    .area-card {
+        padding: 32px;
+    }
+}
+
+@media (max-width: 768px) {
+    .service-area-container {
+        grid-template-columns: 1fr;
+    }
+
+    .area-card h2 {
+        font-size: 28px;
+    }
+}
+    /* Contact Section Enhancements */
+    .contact {
+        position: relative;
+        background: linear-gradient(
+            45deg,
+            var(--fsp-black),
+            var(--fsp-purple-dark)
+        );
+        padding: var(--space-xl) 0;
+        overflow: hidden;
+    }
+
+    .contact::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('https://images.unsplash.com/photo-1565799515768-2dcfd834625c?q=80&w=2000') center/cover;
+        opacity: 0.05;
+        mix-blend-mode: overlay;
+        z-index: 1;
+    }
+
+    .contact-content {
+        position: relative;
+        z-index: 2;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 var(--space-lg);
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-xl);
+    }
+
+    .contact-info {
+        padding-right: var(--space-xl);
+    }
+
+    .contact-heading {
+        font-size: var(--h2);
+        margin-bottom: var(--space-md);
+        background: var(--fsp-purple-gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .contact-subheading {
+        font-size: var(--h3);
+        color: var(--fsp-cream);
+        margin-bottom: var(--space-md);
+        line-height: 1.4;
+    }
+
+    .contact-details {
+        margin-top: var(--space-lg);
+    }
+
+    .contact-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: var(--space-md);
+        padding: var(--space-sm);
+        background: rgba(255,255,255,0.03);
+        border: 1px solid rgba(255,255,255,0.05);
+        border-radius: 8px;
+        transition: all 0.3s ease;
+    }
+
+    .contact-item:hover {
+        background: rgba(255,255,255,0.05);
+        border-color: var(--fsp-blue);
+        transform: translateX(10px);
+    }
+
+    .contact-icon {
+        width: 50px;
+        height: 50px;
+        background: var(--fsp-purple-gradient);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: var(--space-md);
+    }
+
+    .contact-icon i {
+        font-size: 1.5rem;
+        color: var(--fsp-cream);
+    }
+
+    .contact-text {
+        flex: 1;
+    }
+
+    .contact-text h4 {
+        color: var(--fsp-blue);
+        margin-bottom: 0.25rem;
+        font-size: 1.1rem;
+    }
+
+    .contact-text p, 
+    .contact-text a {
+        color: var(--fsp-cream);
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    .contact-text a:hover {
+        color: var(--fsp-blue);
+    }
+
+    .contact-form {
+        background: rgba(255,255,255,0.03);
+        border: 1px solid rgba(255,255,255,0.05);
+        border-radius: 16px;
+        padding: var(--space-xl);
+        backdrop-filter: blur(10px);
+    }
+
+    .form-group {
+        margin-bottom: var(--space-md);
+    }
+
+    .form-label {
+        display: block;
+        margin-bottom: var(--space-xs);
+        color: var(--fsp-cream);
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .form-input {
+        width: 100%;
+        background: rgba(255,255,255,0.05);
+        border: 1px solid rgba(255,255,255,0.1);
+        border-radius: 8px;
+        padding: 1rem;
+        color: var(--fsp-cream);
+        font-size: 1rem;
+        transition: all 0.3s ease;
+    }
+
+    .form-input:focus {
+        outline: none;
+        border-color: var(--fsp-blue);
+        background: rgba(255,255,255,0.08);
+    }
+
+    .form-input::placeholder {
+        color: rgba(255,255,255,0.3);
+    }
+
+    textarea.form-input {
+        min-height: 150px;
+        resize: vertical;
+    }
+
+    .form-submit {
+        width: 100%;
+        padding: 1rem;
+        background: var(--fsp-blue);
+        color: var(--fsp-cream);
+        border: none;
+        border-radius: 8px;
+        font-size: 1rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .form-submit::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,0.2),
+            transparent
+        );
+        transition: transform 0.6s ease;
+    }
+
+    .form-submit:hover {
+        background: var(--fsp-purple-light);
+        transform: translateY(-2px);
+    }
+
+    .form-submit:hover::before {
+        transform: translateX(200%);
+    }
+
+    /* Testimonials Enhancement */
+  .testimonials {
+    padding: 120px 0;
+    background: var(--fsp-black);
+    position: relative;
+    overflow: hidden;
+}
+
+.testimonials-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.overline {
+    display: block;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--fsp-blue);
+    margin-bottom: 16px;
+}
+
+.section-header h2 {
+    font-size: 48px;
+    font-weight: 300;
+    color: var(--fsp-cream);
+    letter-spacing: -0.5px;
+}
+
+.testimonials-slider {
+    position: relative;
+    margin: 0 auto;
+    max-width: 900px;
+}
+
+.slider-container {
+    overflow: hidden;
+    margin-bottom: 40px;
+}
+
+.testimonial-track {
+    display: flex;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.testimonial-slide {
+    flex: 0 0 100%;
+    padding: 40px;
+    opacity: 0.3;
+    transform: scale(0.9);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.testimonial-slide.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.quote-rating {
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.stars {
+    color: var(--fsp-blue);
+    letter-spacing: 2px;
+}
+
+.rating-text {
+    color: rgba(245, 245, 220, 0.6);
+    font-size: 14px;
+}
+
+blockquote {
+    font-size: 24px;
+    line-height: 1.5;
+    color: var(--fsp-cream);
+    font-weight: 300;
+    margin: 0 0 32px 0;
+    letter-spacing: -0.3px;
+}
+
+.testimonial-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.location-pill {
+    display: inline-flex;
+    padding: 6px 12px;
+    background: rgba(66, 183, 231, 0.1);
+    border: 1px solid rgba(66, 183, 231, 0.2);
+    border-radius: 100px;
+    color: white;
+    font-size: 14px;
+    align-self: flex-start;
+}
+
+.author {
+    color: var(--fsp-cream);
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.project {
+    color: rgba(245, 245, 220, 0.6);
+    font-size: 14px;
+}
+
+.slider-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 0 40px;
+}
+
+.progress-bar {
+    height: 2px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 1px;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    background: var(--fsp-blue);
+    width: 33.33%;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-button {
+    background: none;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--fsp-cream);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.nav-button:hover {
+    border-color: var(--fsp-blue);
+    color: var(--fsp-blue);
+}
+
+.nav-button:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .testimonials {
+        padding: 80px 0;
+    }
+
+    .section-header h2 {
+        font-size: 32px;
+    }
+
+    .testimonial-slide {
+        padding: 24px;
+    }
+
+    blockquote {
+        font-size: 20px;
+    }
+
+    .slider-controls {
+        padding: 0 24px;
+    }
+}
+
+    /* Stats Section */
+    .stats {
+    padding: 120px 0;
+    background: var(--fsp-black);
+    position: relative;
+    overflow: hidden;
+}
+
+.stats-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.stats-header {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.stats-overline {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--fsp-blue);
+    display: block;
+    margin-bottom: 16px;
+}
+
+.stats-header h2 {
+    font-size: 48px;
+    font-weight: 300;
+    color: var(--fsp-cream);
+    letter-spacing: -0.5px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+}
+
+.stat-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 40px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+    border-color: var(--fsp-blue);
+    transform: translateY(-4px);
+}
+
+.stat-content {
+    flex: 1;
+}
+
+.stat-value {
+    font-size: 48px;
+    font-weight: 200;
+    color: var(--fsp-cream);
+    line-height: 1;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+}
+
+.symbol {
+    font-size: 24px;
+    color: var(--fsp-blue);
+}
+
+.stat-label {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--fsp-cream);
+    margin-bottom: 8px;
+}
+
+.stat-context {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.stat-icon {
+    color: var(--fsp-blue);
+    opacity: 0.5;
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover .stat-icon {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+    .stats {
+        padding: 80px 0;
+    }
+
+    .stats-header h2 {
+        font-size: 32px;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stat-card {
+        padding: 24px;
+    }
+
+    .stat-value {
+        font-size: 36px;
+    }
+
+    .symbol {
+        font-size: 20px;
+    }
+}
+ /* Footer Section */
+.footer {
+    background: var(--fsp-black);
+    padding: 120px 0 0;
+    color: var(--fsp-cream);
+    position: relative;
+}
+
+.footer-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 32px;
+}
+
+.footer-primary {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 120px;
+    margin-bottom: 120px;
+}
+
+.footer-logo {
+    width: 180px;
+    height: auto;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 80px;
+}
+
+.footer-col h4 {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    margin-bottom: 32px;
+}
+
+.footer-col nav {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.footer-col a {
+    color: var(--fsp-cream);
+    text-decoration: none;
+    font-size: 15px;
+    transition: color 0.3s ease;
+}
+
+.footer-col a:hover {
+    color: var(--fsp-blue);
+}
+
+.footer-col span {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 15px;
+}
+
+.footer-secondary {
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 32px 0;
+}
+
+.footer-bottom-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.copyright {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 14px;
+}
+
+.social-links {
+    display: flex;
+    gap: 24px;
+}
+
+.social-links a {
+    color: rgba(255, 255, 255, 0.4);
+    transition: color 0.3s ease;
+    font-size: 18px;
+}
+
+.social-links a:hover {
+    color: var(--fsp-blue);
+}
+
+.footer-right {
+    display: flex;
+    gap: 32px;
+}
+
+.footer-right a {
+    color: rgba(255, 255, 255, 0.4);
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.footer-right a:hover {
+    color: var(--fsp-blue);
+}
+
+/* Mobile Styles */
+@media (max-width: 1024px) {
+    .footer {
+        padding: 80px 0 0;
+    }
+
+    .footer-primary {
+        grid-template-columns: 1fr;
+        gap: 60px;
+        margin-bottom: 80px;
+    }
+
+    .footer-content {
+        gap: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer-inner {
+        padding: 0 24px;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .footer-bottom-content {
+        flex-direction: column;
+        gap: 24px;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-right {
+        gap: 24px;
+    }
+}
+    /* Awards & Certifications Banner */
+    .awards-banner {
+        padding: var(--space-md) 0;
+        background: rgba(255,255,255,0.02);
+        border-top: 1px solid rgba(255,255,255,0.05);
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .awards-content {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 var(--space-lg);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: var(--space-md);
+    }
+
+    .award-item {
+        display: flex;
+        align-items: center;
+        gap: var(--space-sm);
+        padding: var(--space-sm);
+        background: rgba(255,255,255,0.03);
+        border-radius: 8px;
+        transition: all 0.3s ease;
+    }
+
+    .award-item:hover {
+        background: rgba(255,255,255,0.05);
+        transform: translateY(-2px);
+    }
+
+    .award-icon {
+        color: var(--fsp-blue);
+        font-size: 1.5rem;
+    }
+
+    .award-text {
+        color: rgba(255,255,255,0.7);
+        font-size: 0.9rem;
+    }
+
+    /* Back to Top Button */
+    .back-to-top {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        width: 50px;
+        height: 50px;
+        background: var(--fsp-blue);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--fsp-cream);
+        text-decoration: none;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(20px);
+        transition: all 0.3s ease;
+        z-index: 100;
+    }
+
+    .back-to-top.visible {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .back-to-top:hover {
+        background: var(--fsp-purple-light);
+        transform: translateY(-5px);
+    }
+
+    /* Progressive Image Loading */
+    .lazy-image {
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .lazy-image.loaded {
+        opacity: 1;
+    }
+
+    /* Mobile Optimizations */
+    @media (max-width: 1200px) {
+        .footer-content {
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-lg);
+        }
+
+        .footer-brand {
+            grid-column: 1 / -1;
+            padding-right: 0;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .footer-content {
+            grid-template-columns: 1fr;
+        }
+
+        .awards-content {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .footer-bottom-content {
+            flex-direction: column;
+            gap: var(--space-md);
+            text-align: center;
+        }
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+        width: 12px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: var(--fsp-black);
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: var(--fsp-purple-gradient);
+        border-radius: 6px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: var(--fsp-blue);
+    }
+  
+    </style>
+</head>
+<body>
+<div class="top-bar">
+    <div class="top-bar-content">
+        <div class="top-bar-contact">
+            <a href="tel:0459353449" class="top-bar-link">
+                <i class="fas fa-phone-alt"></i>
+                <span>0459 353 449</span>
+            </a>
+            <a href="mailto:info@flowstatepainting.com.au" class="top-bar-link">
+                <i class="fas fa-envelope"></i>
+                <span>info@flowstatepainting.com.au</span>
+            </a>
+        </div>
+        <div class="top-bar-social">
+            <a href="#" class="top-bar-social-link" aria-label="Facebook">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="top-bar-social-link" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+        </div>
+    </div>
+</div>
+    <!-- Loader -->
+    <div class="loader">
+        <div class="loader-content">
+            <div class="loader-circle"></div>
+        </div>
+    </div>
+
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-content">
+            <img src="https://i.postimg.cc/3rBt5kgk/0e2880b0-03f8-4e3b-8aff-c4d4e32af853-1-removebg-preview.png" alt="Flow State Painting" class="nav-logo">
+            <div class="nav-links">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-bg">
+            <img src="https://images.unsplash.com/photo-1562259949-e8e7689d7828?q=80&w=2000" alt="Painting Project">
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Premium Painting Services</h1>
+            <p class="hero-subtitle">Specializing in new homes and repaints from Tweed Heads to Evans Head</p>
+            <div class="hero-cta">
+                <a href="#contact" class="btn">Get a Quote</a>
+            </div>
+        </div>
+    </section>
+
+<section class="services" id="services">
+    <div class="services-content">
+        <h2 class="section-title">Our Services</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-content">
+                    <i class="fas fa-home service-icon"></i>
+                    <h3 class="service-title">New Homes</h3>
+                    <p class="service-description">Premium finishing for your new build with meticulous attention to detail and superior products.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-content">
+                    <i class="fas fa-paint-roller service-icon"></i>
+                    <h3 class="service-title">Repaints</h3>
+                    <p class="service-description">Transform your existing space with our expert repaint service, breathing new life into every surface.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-content">
+                    <i class="fas fa-shield-alt service-icon"></i>
+                    <h3 class="service-title">Fully Insured</h3>
+                    <p class="service-description">Complete peace of mind with comprehensive insurance coverage for all our painting services.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    <!-- Gallery Section -->
+    <section class="gallery" id="projects">
+        <div class="gallery-header">
+            <h2 class="section-title">Our Projects</h2>
+        
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item" data-category="interior">
+                <img src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=2000" alt="Modern Interior Paint">
+                <div class="gallery-overlay">
+                    <h3>Modern Living Room</h3>
+                    <p>Premium interior finish with custom color matching</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-category="exterior">
+                <img src="https://images.unsplash.com/photo-1568992687947-868a62a9f521?q=80&w=2000" alt="Exterior House Paint">
+                <div class="gallery-overlay">
+                    <h3>Contemporary Exterior</h3>
+                    <p>Weather-resistant finish with lasting protection</p>
+                </div>
+            </div>
+            <!-- Add more gallery items -->
+        </div>
+    </section>
+
+    <!-- Process Section -->
+<section class="process" id="process" aria-label="Professional Painting Process for Gold Coast, Tweed Heads to Evans Head">
+    <div class="process-container">
+        <h2 class="section-title">
+            Painting Process
+        </h2>
+        <p class="process-subtitle">Expert painting services from Tweed Heads to Evans Head, delivering excellence at every step</p>
+        
+        <div class="timeline">
+            <div class="timeline-progress"></div>
+            
+            <!-- Step 1 -->
+            <div class="timeline-item left" data-aos="fade-right">
+                <div class="timeline-content">
+                    <span class="step-number">01</span>
+                    <div class="content-wrapper">
+                        <h3>Initial Consultation</h3>
+                        <p>Free on-site consultation at your Gold Coast property to understand your vision and provide expert color recommendations.</p>
+                        <ul class="timeline-features">
+                            <li>Detailed project assessment</li>
+                            <li>Color consultation</li>
+                            <li>Written quote within 24 hours</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="timeline-item right" data-aos="fade-left">
+                <div class="timeline-content">
+                    <span class="step-number">02</span>
+                    <div class="content-wrapper">
+                        <h3>Project Planning</h3>
+                        <p>Comprehensive planning ensuring minimal disruption to your home or business in the Northern Rivers region.</p>
+                        <ul class="timeline-features">
+                            <li>Timeline development</li>
+                            <li>Premium product selection</li>
+                            <li>Surface preparation strategy</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="timeline-item left" data-aos="fade-right">
+                <div class="timeline-content">
+                    <span class="step-number">03</span>
+                    <div class="content-wrapper">
+                        <h3>Surface Preparation</h3>
+                        <p>Thorough preparation using premium materials for lasting results in coastal and inland environments.</p>
+                        <ul class="timeline-features">
+                            <li>Surface cleaning & repair</li>
+                            <li>Premium primer application</li>
+                            <li>Complete area protection</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="timeline-item right" data-aos="fade-left">
+                <div class="timeline-content">
+                    <span class="step-number">04</span>
+                    <div class="content-wrapper">
+                        <h3>Expert Application</h3>
+                        <p>Professional painting execution by licensed painters using premium Dulux and Taubmans products.</p>
+                        <ul class="timeline-features">
+                            <li>Premium paint application</li>
+                            <li>Quality control checks</li>
+                            <li>Final inspection</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="cta-impact">
+    <div class="cta-bg"></div>
+    <div class="cta-container">
+        <!-- Left Column -->
+        <div class="cta-value">
+            <div class="value-metrics">
+                <div class="metric">
+                    <span class="metric-value">15+</span>
+                    <span class="metric-label">Years Experience</span>
+                </div>
+                <div class="metric-divider"></div>
+                <div class="metric">
+                    <span class="metric-value">850+</span>
+                    <span class="metric-label">Projects Completed</span>
+                </div>
+            </div>
+            <h2 class="value-headline">Transform Your Space</h2>
+            <p class="value-description">Join hundreds of satisfied homeowners who've elevated their properties with our premium painting expertise.</p>
+        </div>
+
+        <!-- Right Column -->
+        <div class="cta-action">
+            <div class="action-card">
+                <div class="card-content">
+                    <span class="card-label">Free Consultation</span>
+                    <h3 class="card-headline">Get Your Premium Quote</h3>
+                    <p class="card-description">Professional assessment tailored to your property's unique requirements.</p>
+                    
+                    <div class="action-features">
+                        <div class="feature">
+                            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M13 6l-7 7-3-3"/>
+                            </svg>
+                            <span>Detailed Project Timeline</span>
+                        </div>
+                        <div class="feature">
+                            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M13 6l-7 7-3-3"/>
+                            </svg>
+                            <span>Expert Color Consultation</span>
+                        </div>
+                        <div class="feature">
+                            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M13 6l-7 7-3-3"/>
+                            </svg>
+                            <span>Upfront Transparent Pricing</span>
+                        </div>
+                    </div>
+
+                    <div class="action-buttons">
+                        <a href="#contact" class="btn-primary">
+                            Get Started
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M5 12h14m-6-6l6 6-6 6"/>
+                            </svg>
+                        </a>
+                        <a href="tel:0459353449" class="btn-secondary">
+                            Call 0459 353 449
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="service-area" id="service-area">
+    <!-- SEO Meta -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Flow State Painting",
+        "image": "https://i.postimg.cc/3rBt5kgk/0e2880b0-03f8-4e3b-8aff-c4d4e32af853-1-removebg-preview.png",
+        "description": "Professional painters serving from Tweed Heads to Evans Head. Specialists in residential, commercial, and new build painting.",
+        "priceRange": "$$",
+        "areaServed": ["Gold Coast", "Tweed Heads", "Byron Bay", "Ballina", "Evans Head"],
+        "address": {
+            "@type": "PostalAddress",
+            "addressRegion": "NSW & QLD",
+            "addressCountry": "AU"
+        },
+        "telephone": "0459353449"
+    }
+    </script>
+
+    <div class="service-area-container">
+        <!-- Left Side - Map Image -->
+        <div class="area-map">
+            <img src="path-to-your-map-image.jpg" alt="Flow State Painting service area map from Tweed Heads to Evans Head" class="map-image">
+        </div>
+
+        <!-- Right Side - Service Areas Card -->
+        <div class="area-card">
+            <h2>Service Areas</h2>
+            <p class="area-subtitle">Gold Coast & Northern Rivers Premium Painters</p>
+            
+            <div class="area-list">
+                <div class="area-group">
+                    <h3>Gold Coast</h3>
+                    <ul>
+                        <li>Coolangatta</li>
+                        <li>Tweed Heads</li>
+                        <li>Kingscliff</li>
+                        <li>Casuarina</li>
+                    </ul>
+                </div>
+
+                <div class="area-group">
+                    <h3>Northern Rivers</h3>
+                    <ul>
+                        <li>Byron Bay</li>
+                        <li>Ballina</li>
+                        <li>Lennox Head</li>
+                        <li>Evans Head</li>
+                    </ul>
+                </div>
+            </div>
+
+            <a href="#contact" class="area-cta">
+                Get Your Quote
+                <span class="arrow">→</span>
+            </a>
+        </div>
+    </div>
+</section>
+    <!-- Testimonials Section -->
+<section class="testimonials" aria-label="Client Testimonials">
+    <div class="testimonials-container">
+        <div class="section-header">
+            <span class="overline">Testimonials</span>
+            <h2>What Our Clients Say</h2>
+        </div>
+
+        <div class="testimonials-slider">
+            <div class="slider-container">
+                <div class="testimonial-track" id="testimonialTrack">
+                    <!-- Testimonial 1 -->
+                    <div class="testimonial-slide">
+                        <div class="quote-rating">
+                            <div class="stars">★★★★★</div>
+                            <span class="rating-text">5.0 Rating</span>
+                        </div>
+                        <blockquote>
+                            "Flow State transformed our home with exceptional attention to detail. Their professional team made the entire process seamless."
+                        </blockquote>
+                        <div class="testimonial-meta">
+                            <div class="location-pill">Tweed Heads</div>
+                            <div class="author">Sarah Mitchell</div>
+                            <div class="project">Full Home Repaint</div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 2 -->
+                    <div class="testimonial-slide">
+                        <div class="quote-rating">
+                            <div class="stars">★★★★★</div>
+                            <span class="rating-text">5.0 Rating</span>
+                        </div>
+                        <blockquote>
+                            "Outstanding quality and service. The team's attention to preparation and finish exceeded our expectations."
+                        </blockquote>
+                        <div class="testimonial-meta">
+                            <div class="location-pill">Gold Coast</div>
+                            <div class="author">Michael Chen</div>
+                            <div class="project">New Build</div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 3 -->
+                    <div class="testimonial-slide">
+                        <div class="quote-rating">
+                            <div class="stars">★★★★★</div>
+                            <span class="rating-text">5.0 Rating</span>
+                        </div>
+                        <blockquote>
+                            "Impeccable workmanship and professionalism. They delivered exactly what they promised, on time and with perfect results."
+                        </blockquote>
+                        <div class="testimonial-meta">
+                            <div class="location-pill">Evans Head</div>
+                            <div class="author">Emma Thompson</div>
+                            <div class="project">Commercial Space</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slider-controls">
+                <div class="progress-bar">
+                    <div class="progress" id="progressBar"></div>
+                </div>
+                <div class="controls">
+                    <button class="nav-button prev" id="prevBtn" aria-label="Previous testimonial">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <button class="nav-button next" id="nextBtn" aria-label="Next testimonial">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    
+    <!-- stats Section -->
+
+<section class="stats" aria-label="Company Statistics">
+    <div class="stats-container">
+        <div class="stats-header">
+            <span class="stats-overline">Our Impact</span>
+            <h2>Trusted by homeowners across the Gold Coast</h2>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card" data-aos="fade-up" data-aos-delay="0">
+                <div class="stat-content">
+                    <div class="stat-value">
+                        <span class="counter" data-target="850">0</span>
+                        <span class="symbol">+</span>
+                    </div>
+                    <div class="stat-label">Projects Completed</div>
+                    <div class="stat-context">across the Gold Coast region</div>
+                </div>
+                <div class="stat-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M3 21h18M3 7v1a3 3 0 003 3h12a3 3 0 003-3V7M6 21V10M18 21V10M3 7l9-4 9 4"/>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="stat-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="stat-content">
+                    <div class="stat-value">
+                        <span class="counter" data-target="98">0</span>
+                        <span class="symbol">%</span>
+                    </div>
+                    <div class="stat-label">Client Satisfaction</div>
+                    <div class="stat-context">based on client feedback</div>
+                </div>
+                <div class="stat-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M12 15l-2 2-2-2M8 11V7a4 4 0 118 0v4"/>
+                        <circle cx="12" cy="12" r="10"/>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="stat-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="stat-content">
+                    <div class="stat-value">
+                        <span class="counter" data-target="15">0</span>
+                        <span class="symbol">+</span>
+                    </div>
+                    <div class="stat-label">Years Experience</div>
+                    <div class="stat-context">of professional service</div>
+                </div>
+                <div class="stat-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M12 8v4l3 3M12 2a10 10 0 100 20 10 10 0 000-20z"/>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="stat-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="stat-content">
+                    <div class="stat-value">
+                        <span class="counter" data-target="250">0</span>
+                        <span class="symbol">km</span>
+                    </div>
+                    <div class="stat-label">Service Range</div>
+                    <div class="stat-context">Tweed Heads to Evans Head</div>
+                </div>
+                <div class="stat-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Contact Section -->
+<section class="contact" id="contact">
+    <div class="contact-container">
+        <h2 class="contact-title">Get Started</h2>
+        
+        <div class="contact-wrapper">
+            <!-- Simple, focused contact options -->
+            <div class="contact-options">
+                <a href="tel:0459353449" class="contact-link">
+                    <span class="link-label">Call directly</span>
+                    <span class="link-value">0459 353 449</span>
+                </a>
+                
+                <a href="mailto:info@flowstatepainting.com.au" class="contact-link">
+                    <span class="link-label">Email us</span>
+                    <span class="link-value">info@flowstatepainting.com.au</span>
+                </a>
+            </div>
+
+            <!-- Ultra-minimal form -->
+            <form class="contact-form">
+                <div class="input-row">
+                    <input type="text" class="minimal-input" placeholder="Name*" required>
+                    <input type="email" class="minimal-input" placeholder="Email*" required>
+                </div>
+
+                <div class="input-row">
+                    <input type="tel" class="minimal-input" placeholder="Phone">
+                    <select class="minimal-input">
+                        <option value="" disabled selected>Project Type*</option>
+                        <option value="residential">Residential</option>
+                        <option value="commercial">Commercial</option>
+                        <option value="new-build">New Build</option>
+                    </select>
+                </div>
+
+                <textarea class="minimal-input" placeholder="Tell us about your project*" rows="4" required></textarea>
+
+                <button type="submit" class="submit-btn">
+                    Send Request
+                    <span class="btn-arrow">→</span>
+                </button>
+            </form>
+        </div>
+    </div>
+</section>
+    <!-- Footer -->
+<!-- Footer HTML Structure -->
+<footer class="footer">
+    <div class="footer-inner">
+        <!-- Main Footer -->
+        <div class="footer-primary">
+            <!-- Logo Column -->
+            <div class="footer-brand">
+                <img src="https://i.postimg.cc/3rBt5kgk/0e2880b0-03f8-4e3b-8aff-c4d4e32af853-1-removebg-preview.png" alt="Flow State Painting" class="footer-logo">
+            </div>
+
+            <!-- Navigation Columns -->
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4>SERVICES</h4>
+                    <nav>
+                        <a href="/residential">Residential</a>
+                        <a href="/commercial">Commercial</a>
+                        <a href="/new-builds">New Builds</a>
+                        <a href="/consultation">Consultation</a>
+                    </nav>
+                </div>
+
+                <div class="footer-col">
+                    <h4>COMPANY</h4>
+                    <nav>
+                        <a href="/about">About</a>
+                        <a href="/process">Process</a>
+                        <a href="/projects">Projects</a>
+                        <a href="/contact">Contact</a>
+                    </nav>
+                </div>
+
+                <div class="footer-col">
+                    <h4>CONTACT</h4>
+                    <nav>
+                        <a href="tel:0459353449">0459 353 449</a>
+                        <a href="mailto:contact@flowstatepainting.com.au">Email Us</a>
+                        <span>Tweed Heads — Evans Head</span>
+                        <span>ABN: 54 848 033 030</span>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Bottom -->
+        <div class="footer-secondary">
+            <div class="footer-bottom-content">
+                <div class="footer-left">
+                    <span class="copyright">© 2024 Flow State Painting</span>
+                </div>
+                
+                <div class="footer-center">
+                    <div class="social-links">
+                        <a href="#" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" aria-label="Facebook">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-right">
+                    <a href="/privacy">Privacy</a>
+                    <a href="/terms">Terms</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/ScrollTrigger.min.js"></script>
+    
+<script>
+// Corrected initialization code
+document.addEventListener('DOMContentLoaded', () => {
+    // First check if elements exist to prevent null reference errors
+    const loader = document.querySelector('.loader');
+    if (!loader) {
+        console.error('Loader element not found');
+        return;
+    }
+
+    // Initialize core animation systems
+    gsap.registerPlugin(ScrollTrigger);
+    
+    // Initialize AOS
+    AOS.init({
+        duration: 1000,
+        once: true,
+        offset: 100,
+        disable: 'mobile' // Disable on mobile for better performance
+    });
+
+    // Create a timeline for the loading sequence
+    const loadingTimeline = gsap.timeline({
+        onComplete: () => {
+            // Remove loader and initialize site
+            gsap.to(loader, {
+                opacity: 0,
+                duration: 0.5,
+                onComplete: () => {
+                    loader.style.display = 'none';
+                    document.body.style.overflow = 'visible';
+                    initializeMainAnimations();
+                }
+            });
+        }
+    });
+
+    // Loading sequence animation
+    loadingTimeline
+        .to('.loader-circle', {
+            rotation: 360,
+            duration: 1.5,
+            ease: 'power2.inOut',
+            repeat: 1
+        })
+        .to('.loader', {
+            opacity: 0,
+            duration: 0.5,
+            onComplete: () => {
+                loader.style.display = 'none';
+            }
+        });
+});
+
+// Main animation initialization
+function initializeMainAnimations() {
+    // Hero section animations
+    const heroTimeline = gsap.timeline({defaults: {ease: 'power3.out'}});
+    
+    heroTimeline
+        .from('.hero-title', {
+            y: 100,
+            opacity: 0,
+            duration: 1
+        })
+        .from('.hero-subtitle', {
+            y: 50,
+            opacity: 0,
+            duration: 1
+        }, '-=0.5')
+        .from('.hero-cta', {
+            y: 30,
+            opacity: 0,
+            duration: 1
+        }, '-=0.5');
+
+ 
+    // Initialize scroll animations
+    initializeScrollEffects();
+
+    // Initialize gallery
+    initializeGallery();
+}
+
+// Gallery initialization
+function initializeGallery() {
+    const gallery = document.querySelector('.gallery-grid');
+
+    if (!gallery || !filters.length) return;
+
+    filters.forEach(filter => {
+        filter.addEventListener('click', () => {
+            const category = filter.dataset.filter;
+            
+            // Update active state
+            filters.forEach(f => f.classList.remove('active'));
+            filter.classList.add('active');
+
+            // Animate items
+            gallery.querySelectorAll('.gallery-item').forEach(item => {
+                const timeline = gsap.timeline();
+                
+                if (category === 'all' || item.dataset.category === category) {
+                    timeline
+                        .to(item, {
+                            scale: 1,
+                            opacity: 1,
+                            duration: 0.5
+                        });
+                } else {
+                    timeline
+                        .to(item, {
+                            scale: 0.8,
+                            opacity: 0,
+                            duration: 0.5
+                        });
+                }
+            });
+        });
+    });
+}
+
+// Error handling
+window.addEventListener('error', (e) => {
+    console.error('JavaScript Error:', e.message);
+});
+
+// Ensure loader is removed if something goes wrong
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        const loader = document.querySelector('.loader');
+        if (loader && loader.style.display !== 'none') {
+            loader.style.display = 'none';
+            document.body.style.overflow = 'visible';
+            console.warn('Loader forcibly removed due to timeout');
+            initializeMainAnimations();
+        }
+    }, 3000); // Fallback after 3 seconds
+});
+// Initialization for animations
+document.addEventListener('DOMContentLoaded', () => {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animated');
+            }
+        });
+    }, {
+        threshold: 0.2
+    });
+
+    document.querySelectorAll('.timeline-item').forEach(item => {
+        observer.observe(item);
+    });
+});
+document.addEventListener('DOMContentLoaded', () => {
+    const track = document.getElementById('testimonialTrack');
+    const slides = track.children;
+    const progressBar = document.getElementById('progressBar');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    
+    let currentIndex = 0;
+
+    function updateSlider() {
+        const offset = -currentIndex * 100;
+        track.style.transform = `translateX(${offset}%)`;
+        progressBar.style.transform = `translateX(${currentIndex * 100}%)`;
+        
+        // Update active states
+        Array.from(slides).forEach((slide, index) => {
+            slide.classList.toggle('active', index === currentIndex);
+        });
+
+        // Update button states
+        prevBtn.disabled = currentIndex === 0;
+        nextBtn.disabled = currentIndex === slides.length - 1;
+    }
+
+    prevBtn.addEventListener('click', () => {
+        if (currentIndex > 0) {
+            currentIndex--;
+            updateSlider();
+        }
+    });
+
+    nextBtn.addEventListener('click', () => {
+        if (currentIndex < slides.length - 1) {
+            currentIndex++;
+            updateSlider();
+        }
+    });
+
+    // Initialize
+    updateSlider();
+});
+function animateCounter(element, target) {
+    const duration = 2000; // Animation duration in milliseconds
+    const steps = 50; // Number of steps
+    const stepDuration = duration / steps;
+    let current = 0;
+    
+    const increment = target / steps;
+    
+    const counter = setInterval(() => {
+        current += increment;
+        
+        if (current >= target) {
+            element.textContent = target;
+            clearInterval(counter);
+        } else {
+            element.textContent = Math.floor(current);
+        }
+    }, stepDuration);
+}
+
+// Intersection Observer for triggering animations
+const observerOptions = {
+    threshold: 0.5,
+    rootMargin: "0px"
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const counters = entry.target.querySelectorAll('.counter');
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-target'));
+                animateCounter(counter, target);
+            });
+            observer.unobserve(entry.target);
+        }
+    });
+}, observerOptions);
+
+// Start observing
+document.addEventListener('DOMContentLoaded', () => {
+    const statsSection = document.querySelector('.stats-grid');
+    observer.observe(statsSection);
+});
+</script>
+</body>
+</html>
