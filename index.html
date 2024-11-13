@@ -815,86 +815,193 @@ textarea.minimal-input {
         line-height: 1.8;
     }
 
-    /* Enhanced Gallery Section */
-    .gallery {
-        background: var(--fsp-black);
-        padding: var(--space-xl) 0;
-    }
+    .projects-section {
+    background: var(--fsp-black);
+    padding: clamp(4rem, 8vw, 8rem) 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
 
-    .gallery-header {
-        text-align: center;
-        margin-bottom: var(--space-xl);
-    }
+.container {
+    width: min(1400px, 92%);
+    margin: 0 auto;
+}
 
-    .gallery-filters {
-        display: flex;
-        justify-content: center;
-        gap: var(--space-sm);
-        margin-top: var(--space-lg);
-    }
+.title {
+    text-align: center;
+    color: var(--fsp-purple-light);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    margin-bottom: clamp(3rem, 6vw, 5rem);
+    font-weight: 300;
+}
 
-   
-    .gallery-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: clamp(2rem, 4vw, 3rem);
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.project-card {
+    height: 350px;
+    border-radius: 20px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.03);
+    position: relative;
+}
+
+.project-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: var(--fsp-purple-gradient);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.project-card:hover::before {
+    opacity: 1;
+}
+
+.slider-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.image-after,
+.image-before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.image-before-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.slider-handle {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 2px;
+    height: 100%;
+    background: var(--fsp-cream);
+    cursor: ew-resize;
+    transform: translateX(-50%);
+}
+
+.slider-handle::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    background: var(--fsp-cream);
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+.slider-handle:hover::before {
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+.labels {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 1.5rem;
+    right: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.labels span {
+    padding: 0.5rem 1rem;
+    background: rgba(0, 0, 0, 0.75);
+    color: var(--fsp-cream);
+    border-radius: 100px;
+    font-size: 0.875rem;
+    backdrop-filter: blur(8px);
+}
+
+/* Mobile Optimization */
+@media (max-width: 768px) {
+    .project-grid {
+        grid-template-columns: 1fr;
         gap: 2rem;
-        padding: 0 var(--space-lg);
     }
 
-    .gallery-item {
-        position: relative;
-        aspect-ratio: 16/9;
-        overflow: hidden;
-        border-radius: 12px;
-        cursor: pointer;
+    .project-card {
+        height: 280px;
     }
 
-    .gallery-img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transform: scale(1.1);
-        transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    .labels {
+        bottom: 1rem;
+        left: 1rem;
+        right: 1rem;
     }
 
-    .gallery-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0,0,0,0.7);
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        padding: var(--space-md);
-        opacity: 0;
-        transform: translateY(20px);
-        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    .labels span {
+        padding: 0.375rem 0.75rem;
+        font-size: 0.75rem;
     }
 
-    .gallery-item:hover .gallery-img {
-        transform: scale(1);
+    .slider-handle::before {
+        width: 32px;
+        height: 32px;
+    }
+}
+
+/* Small Mobile Optimization */
+@media (max-width: 480px) {
+    .container {
+        width: 94%;
     }
 
-    .gallery-item:hover .gallery-overlay {
-        opacity: 1;
-        transform: translateY(0);
+    .project-card {
+        height: 240px;
     }
 
-    .gallery-title {
-        font-size: 1.5rem;
-        color: var(--fsp-cream);
-        margin-bottom: 0.5rem;
+    .title {
+        margin-bottom: 2rem;
+    }
+}
+
+/* Landscape Mobile Optimization */
+@media (max-width: 768px) and (orientation: landscape) {
+    .projects-section {
+        padding: 3rem 0;
     }
 
-    .gallery-category {
-        color: var(--fsp-blue);
-        font-size: 0.9rem;
-        text-transform: uppercase;
-        letter-spacing: 1px;
+    .project-grid {
+        gap: 1.5rem;
     }
 
+    .project-card {
+        height: 240px;
+    }
+}
     /* Enhanced Process Section */
     .process {
     padding: 120px 0;
@@ -1399,10 +1506,97 @@ textarea.minimal-input {
     }
 }
 
+<section class="service-area" id="service-area">
+    <div class="service-area-container">
+        <div class="service-box map-box">
+            <div class="glow-effect"></div>
+            <div class="image-container">
+                <div class="image-wrapper">
+                    <img 
+                        src="https://i.postimg.cc/jjS9hYDT/Untitled.png" 
+                        alt="Flow State Painting service area map" 
+                        class="map-image"
+                    >
+                    <div class="map-overlay"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="service-box content-box">
+            <div class="glow-effect"></div>
+            <div class="content-inner">
+                <div class="title-section">
+                    <h2 class="gradient-text">Service Areas</h2>
+                    <p class="subtitle">Gold Coast & Northern Rivers Premium Painters</p>
+                </div>
+
+                <div class="regions-container">
+                    <div class="region">
+                        <h3>Gold Coast</h3>
+                        <ul>
+                            <li>
+                                <span class="location-marker"></span>
+                                <span>Coolangatta</span>
+                            </li>
+                            <li>
+                                <span class="location-marker"></span>
+                                <span>Tweed Heads</span>
+                            </li>
+                            <li>
+                                <span class="location-marker"></span>
+                                <span>Kingscliff</span>
+                            </li>
+                            <li>
+                                <span class="location-marker"></span>
+                                <span>Casuarina</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="region">
+                        <h3>Northern Rivers</h3>
+                        <ul>
+                            <li>
+                                <span class="location-marker"></span>
+                                <span>Byron Bay</span>
+                            </li>
+                            <li>
+                                <span class="location-marker"></span>
+                                <span>Ballina</span>
+                            </li>
+                            <li>
+                                <span class="location-marker"></span>
+                                <span>Lennox Head</span>
+                            </li>
+                            <li>
+                                <span class="location-marker"></span>
+                                <span>Evans Head</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <a href="#contact" class="cta-button">
+                    <span class="cta-text">Get Your Quote</span>
+                    <span class="cta-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                    <div class="cta-background"></div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
 .service-area {
-    padding: var(--space-xl) 0;
+    padding: clamp(3rem, 8vw, 6rem) var(--space-md);
     background: var(--fsp-black);
-    color: var(--fsp-cream);
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
     position: relative;
     overflow: hidden;
 }
@@ -1410,181 +1604,210 @@ textarea.minimal-input {
 .service-area::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at 50% 50%, rgba(139, 122, 176, 0.05) 0%, transparent 70%);
+    background: radial-gradient(
+        circle at 50% 50%,
+        rgba(85, 59, 139, 0.08) 0%,
+        transparent 70%
+    );
     pointer-events: none;
 }
 
 .service-area-container {
     max-width: 1400px;
+    width: 100%;
     margin: 0 auto;
-    padding: 0 var(--space-md);
     display: grid;
-    grid-template-columns: 0.8fr 1fr;
-    gap: var(--space-xl);
-    align-items: center;
-}
-
-/* Map Styling */
-.area-map-wrapper {
+    grid-template-columns: repeat(2, 1fr);
+    gap: clamp(1.5rem, 4vw, 3rem);
     position: relative;
+    z-index: 1;
 }
 
-.area-map {
+.service-box {
+    aspect-ratio: 1;
+    position: relative;
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(10px);
+    overflow: hidden;
+}
+
+.glow-effect {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(
+        180deg,
+        rgba(139, 122, 176, 0.2),
+        rgba(85, 59, 139, 0.2)
+    );
+    -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    mask: 
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+}
+
+/* Map Box Styles */
+.image-container {
+    width: 100%;
+    height: 100%;
+    padding: 1px;
+}
+
+.image-wrapper {
+    width: 100%;
+    height: 100%;
     position: relative;
     border-radius: 24px;
     overflow: hidden;
-    aspect-ratio: 3/4;
-    transform: translateZ(0);
-    box-shadow: 0 25px 50px -12px rgba(85, 59, 139, 0.15);
-}
-
-.map-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, 
-        rgba(85, 59, 139, 0.2) 0%,
-        rgba(85, 59, 139, 0.1) 100%
-    );
-    z-index: 1;
 }
 
 .map-image {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    transform: scale(1.02);
-    transition: transform 0.6s ease;
+    transform: scale(1.01);
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.area-map:hover .map-image {
+.map-box:hover .map-image {
     transform: scale(1.05);
 }
 
-.map-accent {
+.map-overlay {
     position: absolute;
-    top: -10%;
-    left: -10%;
-    width: 70%;
-    height: 70%;
-    background: var(--fsp-purple-gradient);
-    filter: blur(80px);
-    opacity: 0.15;
-    z-index: -1;
+    inset: 0;
+    background: linear-gradient(
+        180deg,
+        rgba(85, 59, 139, 0.2) 0%,
+        rgba(85, 59, 139, 0.1) 100%
+    );
+    pointer-events: none;
 }
 
-/* Card Styling */
-.content-wrapper {
-    position: relative;
+/* Content Box Styles */
+.content-box {
+    display: flex;
+    flex-direction: column;
 }
 
-.area-card {
-    padding: var(--space-lg);
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 24px;
-    backdrop-filter: blur(10px);
-    transition: all 0.3s ease;
+.content-inner {
+    padding: clamp(2rem, 4vw, 3rem);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
-.area-card:hover {
-    border-color: var(--fsp-purple-dark);
-    transform: translateY(-4px);
+.title-section {
+    margin-bottom: clamp(2rem, 4vw, 3rem);
 }
 
-.card-header {
-    margin-bottom: var(--space-lg);
-}
-
-.area-card h2 {
-    font-size: var(--h3);
+.gradient-text {
+    font-size: clamp(2rem, 4vw, 2.5rem);
     font-weight: 300;
-    margin-bottom: var(--space-xs);
+    letter-spacing: -0.02em;
     background: var(--fsp-purple-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    letter-spacing: -0.02em;
+    margin-bottom: 0.5rem;
 }
 
-.area-subtitle {
-    color: rgba(245, 245, 220, 0.7);
-    font-size: var(--body);
+.subtitle {
+    color: var(--fsp-cream);
+    opacity: 0.7;
+    font-size: clamp(1rem, 1.5vw, 1.1rem);
 }
 
-.area-list {
+.regions-container {
     display: grid;
-    gap: var(--space-lg);
-    margin-bottom: var(--space-lg);
+    gap: 2rem;
+    margin-bottom: auto;
 }
 
-.area-group h3 {
+.region h3 {
     color: var(--fsp-purple-light);
     font-size: 1.125rem;
-    margin-bottom: var(--space-sm);
+    margin-bottom: 1rem;
     letter-spacing: 0.5px;
-    font-weight: 500;
 }
 
-.area-group ul {
-    list-style: none;
+.region ul {
     display: grid;
-    gap: var(--space-xs);
+    gap: 0.75rem;
+    list-style: none;
 }
 
-.area-group li {
-    color: rgba(245, 245, 220, 0.8);
+.region li {
     display: flex;
     align-items: center;
-    gap: var(--space-xs);
-    transition: color 0.3s ease;
-}
-
-.area-group li:hover {
+    gap: 0.75rem;
     color: var(--fsp-cream);
+    opacity: 0.8;
+    transition: all 0.3s ease;
 }
 
-.location-dot {
+.region li:hover {
+    opacity: 1;
+    transform: translateX(4px);
+}
+
+.location-marker {
     width: 6px;
     height: 6px;
     background: var(--fsp-purple-light);
     border-radius: 50%;
-}
-
-.area-cta {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-xs);
-    color: var(--fsp-cream);
-    text-decoration: none;
-    font-size: var(--body);
-    padding: var(--space-sm) var(--space-md);
-    background: var(--fsp-purple-gradient);
-    border-radius: 100px;
-    transition: all 0.3s ease;
     position: relative;
-    overflow: hidden;
 }
 
-.area-cta::before {
+.location-marker::after {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, transparent 100%);
-    opacity: 0;
-    transition: opacity 0.3s ease;
+    inset: -2px;
+    border-radius: 50%;
+    background: var(--fsp-purple-light);
+    opacity: 0.3;
+    transform: scale(0);
+    transition: transform 0.3s ease;
 }
 
-.area-cta:hover::before {
-    opacity: 1;
+.region li:hover .location-marker::after {
+    transform: scale(1);
 }
 
-.area-cta:hover .cta-icon {
+.cta-button {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.875rem 1.5rem;
+    border-radius: 100px;
+    color: var(--fsp-cream);
+    text-decoration: none;
+    overflow: hidden;
+    isolation: isolate;
+    align-self: flex-start;
+    margin-top: 2rem;
+}
+
+.cta-background {
+    position: absolute;
+    inset: 0;
+    background: var(--fsp-purple-gradient);
+    z-index: -1;
+    transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+    transform: translateY(-2px);
+}
+
+.cta-button:hover .cta-icon {
     transform: translateX(4px);
 }
 
@@ -1594,14 +1817,11 @@ textarea.minimal-input {
 
 @media (max-width: 1024px) {
     .service-area {
-        padding: var(--space-lg) 0;
+        padding: var(--space-lg) var(--space-md);
+        min-height: auto;
     }
-    
-    .service-area-container {
-        gap: var(--space-lg);
-    }
-    
-    .area-card {
+
+    .content-inner {
         padding: var(--space-md);
     }
 }
@@ -1610,9 +1830,27 @@ textarea.minimal-input {
     .service-area-container {
         grid-template-columns: 1fr;
     }
-    
-    .area-map {
+
+    .service-box {
+        aspect-ratio: auto;
+    }
+
+    .image-wrapper {
         aspect-ratio: 4/3;
+    }
+
+    .content-inner {
+        padding: var(--space-md);
+    }
+}
+
+@media (max-width: 480px) {
+    .gradient-text {
+        font-size: 1.75rem;
+    }
+    
+    .regions-container {
+        gap: 1.5rem;
     }
 }
     /* Contact Section Enhancements */
@@ -2507,30 +2745,41 @@ blockquote {
     </div>
 </section>
     <!-- Gallery Section -->
-    <section class="gallery" id="projects">
-        <div class="gallery-header">
-            <h2 class="section-title">Our Projects</h2>
+<section class="projects-section">
+    <div class="container">
+        <h2 class="title">Our Projects</h2>
         
-        </div>
-        <div class="gallery-grid">
-            <div class="gallery-item" data-category="interior">
-                <img src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=2000" alt="Modern Interior Paint">
-                <div class="gallery-overlay">
-                    <h3>Modern Living Room</h3>
-                    <p>Premium interior finish with custom color matching</p>
+        <div class="project-grid">
+            <div class="project-card">
+                <div class="slider-container">
+                    <img src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f" class="image-after">
+                    <div class="image-before-container">
+                        <img src="https://images.unsplash.com/photo-1568992687947-868a62a9f521" class="image-before">
+                    </div>
+                    <div class="slider-handle"></div>
+                    <div class="labels">
+                        <span>Before</span>
+                        <span>After</span>
+                    </div>
                 </div>
             </div>
-            <div class="gallery-item" data-category="exterior">
-                <img src="https://images.unsplash.com/photo-1568992687947-868a62a9f521?q=80&w=2000" alt="Exterior House Paint">
-                <div class="gallery-overlay">
-                    <h3>Contemporary Exterior</h3>
-                    <p>Weather-resistant finish with lasting protection</p>
-                </div>
-            </div>
-            <!-- Add more gallery items -->
-        </div>
-    </section>
 
+            <div class="project-card">
+                <div class="slider-container">
+                    <img src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f" class="image-after">
+                    <div class="image-before-container">
+                        <img src="https://images.unsplash.com/photo-1568992687947-868a62a9f521" class="image-before">
+                    </div>
+                    <div class="slider-handle"></div>
+                    <div class="labels">
+                        <span>Before</span>
+                        <span>After</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
     <!-- Process Section -->
 <section class="process" id="process" aria-label="Professional Painting Process for Gold Coast, Tweed Heads to Evans Head">
     <div class="process-container">
@@ -2676,76 +2925,87 @@ blockquote {
 
 <section class="service-area" id="service-area">
     <div class="service-area-container">
-        <!-- Left Side - Interactive Map -->
-        <div class="area-map-wrapper">
-            <div class="area-map">
-                <div class="map-overlay"></div>
-                <img src="https://i.postimg.cc/jjS9hYDT/Untitled.png" alt="Flow State Painting service area map from Tweed Heads to Evans Head" class="map-image">
+        <div class="service-box map-box">
+            <div class="glow-effect"></div>
+            <div class="image-container">
+                <div class="image-wrapper">
+                    <img 
+                        src="https://i.postimg.cc/jjS9hYDT/Untitled.png" 
+                        alt="Flow State Painting service area map" 
+                        class="map-image"
+                    >
+                    <div class="map-overlay"></div>
+                </div>
             </div>
-            <div class="map-accent"></div>
         </div>
 
-        <!-- Right Side - Service Areas Card -->
-        <div class="content-wrapper">
-            <div class="area-card">
-                <div class="card-header">
-                    <h2>Service Areas</h2>
-                    <p class="area-subtitle">Gold Coast & Northern Rivers Premium Painters</p>
+        <div class="service-box content-box">
+            <div class="glow-effect"></div>
+            <div class="content-inner">
+                <div class="title-section">
+                    <h2 class="gradient-text">Service Areas</h2>
+                    <p class="subtitle">Gold Coast & Northern Rivers Premium Painters</p>
                 </div>
-                
-                <div class="area-list">
-                    <div class="area-group" data-aos="fade-up" data-aos-delay="100">
+
+                <div class="regions-container">
+                    <div class="region">
                         <h3>Gold Coast</h3>
                         <ul>
                             <li>
-                                <span class="location-dot"></span>
+                                <span class="location-marker"></span>
                                 <span>Coolangatta</span>
                             </li>
                             <li>
-                                <span class="location-dot"></span>
+                                <span class="location-marker"></span>
                                 <span>Tweed Heads</span>
                             </li>
                             <li>
-                                <span class="location-dot"></span>
+                                <span class="location-marker"></span>
                                 <span>Kingscliff</span>
                             </li>
                             <li>
-                                <span class="location-dot"></span>
+                                <span class="location-marker"></span>
                                 <span>Casuarina</span>
                             </li>
                         </ul>
                     </div>
-                    <div class="area-group" data-aos="fade-up" data-aos-delay="200">
+
+                    <div class="region">
                         <h3>Northern Rivers</h3>
                         <ul>
                             <li>
-                                <span class="location-dot"></span>
+                                <span class="location-marker"></span>
                                 <span>Byron Bay</span>
                             </li>
                             <li>
-                                <span class="location-dot"></span>
+                                <span class="location-marker"></span>
                                 <span>Ballina</span>
                             </li>
                             <li>
-                                <span class="location-dot"></span>
+                                <span class="location-marker"></span>
                                 <span>Lennox Head</span>
                             </li>
                             <li>
-                                <span class="location-dot"></span>
+                                <span class="location-marker"></span>
                                 <span>Evans Head</span>
                             </li>
                         </ul>
                     </div>
                 </div>
-                <a href="#contact" class="area-cta">
+
+                <a href="#contact" class="cta-button">
                     <span class="cta-text">Get Your Quote</span>
-                    <span class="cta-icon">→</span>
+                    <span class="cta-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                    <div class="cta-background"></div>
                 </a>
             </div>
         </div>
     </div>
 </section>
-
     <!-- Testimonials Section -->
 <section class="testimonials" aria-label="Client Testimonials">
     <div class="testimonials-container">
@@ -3268,6 +3528,67 @@ const observer = new IntersectionObserver((entries) => {
 document.addEventListener('DOMContentLoaded', () => {
     const statsSection = document.querySelector('.stats-grid');
     observer.observe(statsSection);
+});
+document.addEventListener('DOMContentLoaded', () => {
+    const sliders = document.querySelectorAll('.slider-container');
+
+    sliders.forEach(slider => {
+        const beforeContainer = slider.querySelector('.image-before-container');
+        const handle = slider.querySelector('.slider-handle');
+        let isResizing = false;
+
+        const resize = (e) => {
+            if (!isResizing) return;
+
+            const rect = slider.getBoundingClientRect();
+            const x = e.type.includes('touch') 
+                ? e.touches[0].clientX - rect.left 
+                : e.clientX - rect.left;
+            
+            const position = Math.max(0, Math.min(x / rect.width * 100, 100));
+            
+            beforeContainer.style.width = `${position}%`;
+            handle.style.left = `${position}%`;
+        };
+
+        // Mouse events
+        handle.addEventListener('mousedown', () => {
+            isResizing = true;
+            slider.style.cursor = 'ew-resize';
+        });
+
+        window.addEventListener('mousemove', resize);
+        window.addEventListener('mouseup', () => {
+            isResizing = false;
+            slider.style.cursor = 'default';
+        });
+
+        // Touch events
+        handle.addEventListener('touchstart', () => {
+            isResizing = true;
+        }, { passive: true });
+
+        window.addEventListener('touchmove', (e) => {
+            if (!isResizing) return;
+            
+            const rect = slider.getBoundingClientRect();
+            const x = e.touches[0].clientX - rect.left;
+            const position = Math.max(0, Math.min(x / rect.width * 100, 100));
+            
+            beforeContainer.style.width = `${position}%`;
+            handle.style.left = `${position}%`;
+        }, { passive: true });
+
+        window.addEventListener('touchend', () => {
+            isResizing = false;
+        });
+
+        // Double click to reset
+        slider.addEventListener('dblclick', () => {
+            beforeContainer.style.width = '50%';
+            handle.style.left = '50%';
+        });
+    });
 });
 </script>
 </body>
