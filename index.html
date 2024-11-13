@@ -815,7 +815,8 @@ textarea.minimal-input {
         line-height: 1.8;
     }
 
-    .projects-section {
+    
+.projects-section {
     background: var(--fsp-black);
     padding: clamp(4rem, 8vw, 8rem) 0;
     min-height: 100vh;
@@ -832,8 +833,8 @@ textarea.minimal-input {
     text-align: center;
     color: var(--fsp-purple-light);
     font-size: clamp(2.5rem, 5vw, 4rem);
-    margin-bottom: clamp(3rem, 6vw, 5rem);
     font-weight: 300;
+    margin-bottom: clamp(3rem, 6vw, 5rem);
 }
 
 .project-grid {
@@ -844,7 +845,7 @@ textarea.minimal-input {
     margin: 0 auto;
 }
 
-.project-card {
+.comparison-wrapper {
     height: 350px;
     border-radius: 20px;
     overflow: hidden;
@@ -852,7 +853,7 @@ textarea.minimal-input {
     position: relative;
 }
 
-.project-card::before {
+.comparison-wrapper::before {
     content: '';
     position: absolute;
     inset: 0;
@@ -865,21 +866,22 @@ textarea.minimal-input {
     mask-composite: exclude;
     opacity: 0.5;
     transition: opacity 0.3s ease;
+    pointer-events: none;
 }
 
-.project-card:hover::before {
+.comparison-wrapper:hover::before {
     opacity: 1;
 }
 
-.slider-container {
+.comparison {
     position: relative;
     width: 100%;
     height: 100%;
     overflow: hidden;
+    touch-action: none;
 }
 
-.image-after,
-.image-before {
+.comparison-image {
     position: absolute;
     top: 0;
     left: 0;
@@ -888,7 +890,7 @@ textarea.minimal-input {
     object-fit: cover;
 }
 
-.image-before-container {
+.comparison-overlay {
     position: absolute;
     top: 0;
     left: 0;
@@ -897,32 +899,42 @@ textarea.minimal-input {
     overflow: hidden;
 }
 
-.slider-handle {
+.handle {
     position: absolute;
     top: 0;
     left: 50%;
     width: 2px;
     height: 100%;
-    background: var(--fsp-cream);
-    cursor: ew-resize;
     transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    pointer-events: none;
 }
 
-.slider-handle::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+.handle-line {
+    flex: 1;
+    width: 2px;
+    background: var(--fsp-cream);
+}
+
+.handle-circle {
     width: 40px;
     height: 40px;
     background: var(--fsp-cream);
     border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--fsp-black);
+    pointer-events: auto;
+    cursor: grab;
     transition: transform 0.3s ease;
 }
 
-.slider-handle:hover::before {
-    transform: translate(-50%, -50%) scale(1.1);
+.handle-circle:active {
+    cursor: grabbing;
+    transform: scale(1.1);
 }
 
 .labels {
@@ -932,7 +944,6 @@ textarea.minimal-input {
     right: 1.5rem;
     display: flex;
     justify-content: space-between;
-    z-index: 10;
     pointer-events: none;
 }
 
@@ -945,15 +956,19 @@ textarea.minimal-input {
     backdrop-filter: blur(8px);
 }
 
-/* Mobile Optimization */
 @media (max-width: 768px) {
     .project-grid {
         grid-template-columns: 1fr;
         gap: 2rem;
     }
 
-    .project-card {
+    .comparison-wrapper {
         height: 280px;
+    }
+
+    .handle-circle {
+        width: 32px;
+        height: 32px;
     }
 
     .labels {
@@ -966,42 +981,14 @@ textarea.minimal-input {
         padding: 0.375rem 0.75rem;
         font-size: 0.75rem;
     }
-
-    .slider-handle::before {
-        width: 32px;
-        height: 32px;
-    }
 }
 
-/* Small Mobile Optimization */
 @media (max-width: 480px) {
-    .container {
-        width: 94%;
-    }
-
-    .project-card {
-        height: 240px;
-    }
-
-    .title {
-        margin-bottom: 2rem;
-    }
-}
-
-/* Landscape Mobile Optimization */
-@media (max-width: 768px) and (orientation: landscape) {
-    .projects-section {
-        padding: 3rem 0;
-    }
-
-    .project-grid {
-        gap: 1.5rem;
-    }
-
-    .project-card {
+    .comparison-wrapper {
         height: 240px;
     }
 }
+
     /* Enhanced Process Section */
     .process {
     padding: 120px 0;
@@ -2750,36 +2737,59 @@ blockquote {
         <h2 class="title">Our Projects</h2>
         
         <div class="project-grid">
-            <div class="project-card">
-                <div class="slider-container">
-                    <img src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f" class="image-after">
-                    <div class="image-before-container">
-                        <img src="https://images.unsplash.com/photo-1568992687947-868a62a9f521" class="image-before">
+            <!-- First comparison -->
+            <div class="comparison-wrapper">
+                <div class="comparison">
+                    <!-- After image as base -->
+                    <img src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f" alt="After" class="comparison-image">
+                    <!-- Before image with overlay -->
+                    <div class="comparison-overlay">
+                        <img src="https://images.unsplash.com/photo-1568992687947-868a62a9f521" alt="Before" class="comparison-image">
                     </div>
-                    <div class="slider-handle"></div>
+                    <!-- Handle -->
+                    <div class="handle">
+                        <span class="handle-line"></span>
+                        <span class="handle-circle">
+                            <svg width="16" height="16" viewBox="0 0 16 16">
+                                <path d="M2 8h12M8 2v12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </span>
+                        <span class="handle-line"></span>
+                    </div>
+                    <!-- Labels -->
                     <div class="labels">
-                        <span>Before</span>
-                        <span>After</span>
+                        <span class="label-before">Before</span>
+                        <span class="label-after">After</span>
                     </div>
                 </div>
             </div>
 
-            <div class="project-card">
-                <div class="slider-container">
-                    <img src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f" class="image-after">
-                    <div class="image-before-container">
-                        <img src="https://images.unsplash.com/photo-1568992687947-868a62a9f521" class="image-before">
+            <!-- Second comparison -->
+            <div class="comparison-wrapper">
+                <div class="comparison">
+                    <img src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f" alt="After" class="comparison-image">
+                    <div class="comparison-overlay">
+                        <img src="https://images.unsplash.com/photo-1568992687947-868a62a9f521" alt="Before" class="comparison-image">
                     </div>
-                    <div class="slider-handle"></div>
+                    <div class="handle">
+                        <span class="handle-line"></span>
+                        <span class="handle-circle">
+                            <svg width="16" height="16" viewBox="0 0 16 16">
+                                <path d="M2 8h12M8 2v12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </span>
+                        <span class="handle-line"></span>
+                    </div>
                     <div class="labels">
-                        <span>Before</span>
-                        <span>After</span>
+                        <span class="label-before">Before</span>
+                        <span class="label-after">After</span>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
+
     <!-- Process Section -->
 <section class="process" id="process" aria-label="Professional Painting Process for Gold Coast, Tweed Heads to Evans Head">
     <div class="process-container">
@@ -3530,66 +3540,83 @@ document.addEventListener('DOMContentLoaded', () => {
     observer.observe(statsSection);
 });
 document.addEventListener('DOMContentLoaded', () => {
-    const sliders = document.querySelectorAll('.slider-container');
+    const comparisons = document.querySelectorAll('.comparison');
 
-    sliders.forEach(slider => {
-        const beforeContainer = slider.querySelector('.image-before-container');
-        const handle = slider.querySelector('.slider-handle');
-        let isResizing = false;
+    comparisons.forEach(comparison => {
+        const overlay = comparison.querySelector('.comparison-overlay');
+        const handle = comparison.querySelector('.handle');
+        
+        let isDragging = false;
+        let startX = 0;
+        let overlayWidth = 50;
 
-        const resize = (e) => {
-            if (!isResizing) return;
+        function getPosition(event) {
+            const rect = comparison.getBoundingClientRect();
+            const pageX = event.type.includes('touch') ? event.touches[0].clientX : event.clientX;
+            const position = ((pageX - rect.left) / rect.width) * 100;
+            return Math.min(Math.max(position, 0), 100);
+        }
 
-            const rect = slider.getBoundingClientRect();
-            const x = e.type.includes('touch') 
-                ? e.touches[0].clientX - rect.left 
-                : e.clientX - rect.left;
-            
-            const position = Math.max(0, Math.min(x / rect.width * 100, 100));
-            
-            beforeContainer.style.width = `${position}%`;
+        function move(event) {
+            if (!isDragging) return;
+            event.preventDefault();
+            const position = getPosition(event);
+            overlayWidth = position;
+            overlay.style.width = `${position}%`;
             handle.style.left = `${position}%`;
-        };
+        }
 
-        // Mouse events
-        handle.addEventListener('mousedown', () => {
-            isResizing = true;
-            slider.style.cursor = 'ew-resize';
+        // Mouse Events
+        comparison.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            startX = e.clientX;
         });
 
-        window.addEventListener('mousemove', resize);
-        window.addEventListener('mouseup', () => {
-            isResizing = false;
-            slider.style.cursor = 'default';
-        });
+        window.addEventListener('mousemove', move);
+        window.addEventListener('mouseup', () => isDragging = false);
 
-        // Touch events
-        handle.addEventListener('touchstart', () => {
-            isResizing = true;
+        // Touch Events
+        comparison.addEventListener('touchstart', (e) => {
+            isDragging = true;
+            startX = e.touches[0].clientX;
         }, { passive: true });
 
-        window.addEventListener('touchmove', (e) => {
-            if (!isResizing) return;
-            
-            const rect = slider.getBoundingClientRect();
-            const x = e.touches[0].clientX - rect.left;
-            const position = Math.max(0, Math.min(x / rect.width * 100, 100));
-            
-            beforeContainer.style.width = `${position}%`;
-            handle.style.left = `${position}%`;
+        comparison.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+            const touch = e.touches[0];
+            const rect = comparison.getBoundingClientRect();
+            const position = ((touch.clientX - rect.left) / rect.width) * 100;
+            overlayWidth = Math.min(Math.max(position, 0), 100);
+            overlay.style.width = `${overlayWidth}%`;
+            handle.style.left = `${overlayWidth}%`;
         }, { passive: true });
 
-        window.addEventListener('touchend', () => {
-            isResizing = false;
+        comparison.addEventListener('touchend', () => {
+            isDragging = false;
         });
 
-        // Double click to reset
-        slider.addEventListener('dblclick', () => {
-            beforeContainer.style.width = '50%';
+        // Double tap handler
+        let lastTap = 0;
+        comparison.addEventListener('touchend', (e) => {
+            const currentTime = new Date().getTime();
+            const tapLength = currentTime - lastTap;
+            if (tapLength < 300 && tapLength > 0) {
+                overlayWidth = 50;
+                overlay.style.width = '50%';
+                handle.style.left = '50%';
+            }
+            lastTap = currentTime;
+        });
+
+        // Double click handler
+        comparison.addEventListener('dblclick', () => {
+            overlayWidth = 50;
+            overlay.style.width = '50%';
             handle.style.left = '50%';
         });
     });
 });
+
 </script>
 </body>
 </html>
