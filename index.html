@@ -1400,114 +1400,209 @@ textarea.minimal-input {
 }
 
 .service-area {
-    padding: 120px 0;
+    padding: var(--space-xl) 0;
     background: var(--fsp-black);
     color: var(--fsp-cream);
+    position: relative;
+    overflow: hidden;
+}
+
+.service-area::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 50% 50%, rgba(139, 122, 176, 0.05) 0%, transparent 70%);
+    pointer-events: none;
 }
 
 .service-area-container {
     max-width: 1400px;
     margin: 0 auto;
-    padding: 0 24px;
+    padding: 0 var(--space-md);
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
+    grid-template-columns: 0.8fr 1fr;
+    gap: var(--space-xl);
     align-items: center;
+}
+
+/* Map Styling */
+.area-map-wrapper {
+    position: relative;
 }
 
 .area-map {
     position: relative;
-    border-radius: 16px;
+    border-radius: 24px;
     overflow: hidden;
-    aspect-ratio: 4/3;
+    aspect-ratio: 3/4;
+    transform: translateZ(0);
+    box-shadow: 0 25px 50px -12px rgba(85, 59, 139, 0.15);
+}
+
+.map-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, 
+        rgba(85, 59, 139, 0.2) 0%,
+        rgba(85, 59, 139, 0.1) 100%
+    );
+    z-index: 1;
 }
 
 .map-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transform: scale(1.02);
+    transition: transform 0.6s ease;
+}
+
+.area-map:hover .map-image {
+    transform: scale(1.05);
+}
+
+.map-accent {
+    position: absolute;
+    top: -10%;
+    left: -10%;
+    width: 70%;
+    height: 70%;
+    background: var(--fsp-purple-gradient);
+    filter: blur(80px);
+    opacity: 0.15;
+    z-index: -1;
+}
+
+/* Card Styling */
+.content-wrapper {
+    position: relative;
 }
 
 .area-card {
-    padding: 48px;
+    padding: var(--space-lg);
     background: rgba(255, 255, 255, 0.02);
     border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 16px;
+    border-radius: 24px;
+    backdrop-filter: blur(10px);
     transition: all 0.3s ease;
 }
 
 .area-card:hover {
     border-color: var(--fsp-purple-dark);
+    transform: translateY(-4px);
+}
+
+.card-header {
+    margin-bottom: var(--space-lg);
 }
 
 .area-card h2 {
-    font-size: 32px;
+    font-size: var(--h3);
     font-weight: 300;
-    margin-bottom: 8px;
-    color: var(--fsp-cream);
+    margin-bottom: var(--space-xs);
+    background: var(--fsp-purple-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.02em;
 }
 
 .area-subtitle {
     color: rgba(245, 245, 220, 0.7);
-    margin-bottom: 32px;
+    font-size: var(--body);
 }
 
 .area-list {
     display: grid;
-    gap: 32px;
-    margin-bottom: 40px;
+    gap: var(--space-lg);
+    margin-bottom: var(--space-lg);
 }
 
 .area-group h3 {
-    color: var(--fsp-purple-dark);
-    font-size: 18px;
-    margin-bottom: 16px;
+    color: var(--fsp-purple-light);
+    font-size: 1.125rem;
+    margin-bottom: var(--space-sm);
     letter-spacing: 0.5px;
+    font-weight: 500;
 }
 
 .area-group ul {
     list-style: none;
     display: grid;
-    gap: 12px;
+    gap: var(--space-xs);
 }
 
 .area-group li {
     color: rgba(245, 245, 220, 0.8);
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    transition: color 0.3s ease;
+}
+
+.area-group li:hover {
+    color: var(--fsp-cream);
+}
+
+.location-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--fsp-purple-light);
+    border-radius: 50%;
 }
 
 .area-cta {
     display: inline-flex;
     align-items: center;
-    gap: 12px;
+    gap: var(--space-xs);
     color: var(--fsp-cream);
     text-decoration: none;
-    font-size: 16px;
+    font-size: var(--body);
+    padding: var(--space-sm) var(--space-md);
+    background: var(--fsp-purple-gradient);
+    border-radius: 100px;
     transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
 
-.area-cta:hover {
-    color: var(--fsp-purple-dark);
+.area-cta::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
-.area-cta:hover .arrow {
-    transform: translateX(8px);
+.area-cta:hover::before {
+    opacity: 1;
 }
 
-.arrow {
+.area-cta:hover .cta-icon {
+    transform: translateX(4px);
+}
+
+.cta-icon {
     transition: transform 0.3s ease;
 }
 
 @media (max-width: 1024px) {
     .service-area {
-        padding: 80px 0;
+        padding: var(--space-lg) 0;
     }
-
+    
     .service-area-container {
-        gap: 48px;
+        gap: var(--space-lg);
     }
-
+    
     .area-card {
-        padding: 32px;
+        padding: var(--space-md);
     }
 }
 
@@ -1515,9 +1610,9 @@ textarea.minimal-input {
     .service-area-container {
         grid-template-columns: 1fr;
     }
-
-    .area-card h2 {
-        font-size: 28px;
+    
+    .area-map {
+        aspect-ratio: 4/3;
     }
 }
     /* Contact Section Enhancements */
@@ -2580,65 +2675,77 @@ blockquote {
 </section>
 
 <section class="service-area" id="service-area">
-    <!-- SEO Meta -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "Flow State Painting",
-        "image": "https://i.postimg.cc/3rBt5kgk/0e2880b0-03f8-4e3b-8aff-c4d4e32af853-1-removebg-preview.png",
-        "description": "Professional painters serving from Tweed Heads to Evans Head. Specialists in residential, commercial, and new build painting.",
-        "priceRange": "$$",
-        "areaServed": ["Gold Coast", "Tweed Heads", "Byron Bay", "Ballina", "Evans Head"],
-        "address": {
-            "@type": "PostalAddress",
-            "addressRegion": "NSW & QLD",
-            "addressCountry": "AU"
-        },
-        "telephone": "0459353449"
-    }
-    </script>
-
     <div class="service-area-container">
-        <!-- Left Side - Map Image -->
-        <div class="area-map">
-            <img src="https://i.postimg.cc/jjS9hYDT/Untitled.png" alt="Flow State Painting service area map from Tweed Heads to Evans Head" class="map-image">
+        <!-- Left Side - Interactive Map -->
+        <div class="area-map-wrapper">
+            <div class="area-map">
+                <div class="map-overlay"></div>
+                <img src="https://i.postimg.cc/jjS9hYDT/Untitled.png" alt="Flow State Painting service area map from Tweed Heads to Evans Head" class="map-image">
+            </div>
+            <div class="map-accent"></div>
         </div>
 
         <!-- Right Side - Service Areas Card -->
-        <div class="area-card">
-            <h2>Service Areas</h2>
-            <p class="area-subtitle">Gold Coast & Northern Rivers Premium Painters</p>
-            
-            <div class="area-list">
-                <div class="area-group">
-                    <h3>Gold Coast</h3>
-                    <ul>
-                        <li>Coolangatta</li>
-                        <li>Tweed Heads</li>
-                        <li>Kingscliff</li>
-                        <li>Casuarina</li>
-                    </ul>
+        <div class="content-wrapper">
+            <div class="area-card">
+                <div class="card-header">
+                    <h2>Service Areas</h2>
+                    <p class="area-subtitle">Gold Coast & Northern Rivers Premium Painters</p>
                 </div>
-
-                <div class="area-group">
-                    <h3>Northern Rivers</h3>
-                    <ul>
-                        <li>Byron Bay</li>
-                        <li>Ballina</li>
-                        <li>Lennox Head</li>
-                        <li>Evans Head</li>
-                    </ul>
+                
+                <div class="area-list">
+                    <div class="area-group" data-aos="fade-up" data-aos-delay="100">
+                        <h3>Gold Coast</h3>
+                        <ul>
+                            <li>
+                                <span class="location-dot"></span>
+                                <span>Coolangatta</span>
+                            </li>
+                            <li>
+                                <span class="location-dot"></span>
+                                <span>Tweed Heads</span>
+                            </li>
+                            <li>
+                                <span class="location-dot"></span>
+                                <span>Kingscliff</span>
+                            </li>
+                            <li>
+                                <span class="location-dot"></span>
+                                <span>Casuarina</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="area-group" data-aos="fade-up" data-aos-delay="200">
+                        <h3>Northern Rivers</h3>
+                        <ul>
+                            <li>
+                                <span class="location-dot"></span>
+                                <span>Byron Bay</span>
+                            </li>
+                            <li>
+                                <span class="location-dot"></span>
+                                <span>Ballina</span>
+                            </li>
+                            <li>
+                                <span class="location-dot"></span>
+                                <span>Lennox Head</span>
+                            </li>
+                            <li>
+                                <span class="location-dot"></span>
+                                <span>Evans Head</span>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
+                <a href="#contact" class="area-cta">
+                    <span class="cta-text">Get Your Quote</span>
+                    <span class="cta-icon">→</span>
+                </a>
             </div>
-
-            <a href="#contact" class="area-cta">
-                Get Your Quote
-                <span class="arrow">→</span>
-            </a>
         </div>
     </div>
 </section>
+
     <!-- Testimonials Section -->
 <section class="testimonials" aria-label="Client Testimonials">
     <div class="testimonials-container">
