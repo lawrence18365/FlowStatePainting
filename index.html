@@ -694,127 +694,201 @@ textarea.minimal-input {
             }
         }
         /* Enhanced Services Section */
-    .services {
-        position: relative;
-        background: linear-gradient(
-            to bottom,
-            var(--fsp-dark-gray),
-            var(--fsp-black)
-        );
-        overflow: hidden;
-        
-    }
+ .services {
+    position: relative;
+    background-color: var(--fsp-black);
+    padding: clamp(4rem, 10vh, 8rem) 0;
+}
 
-    .services::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: url('https://images.unsplash.com/photo-1567225557594-88d73e55f2cb?q=80&w=2000') center/cover;
-        opacity: 0.1;
-        z-index: 1;
-    }
+.services-content {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 var(--space-lg);
+}
 
-    .services-content {
-        position: relative;
-        z-index: 2;
-        padding-bottom: 10%;
-    }
+.services-header {
+    text-align: center;
+    margin-bottom: clamp(3rem, 8vh, 5rem);
+}
 
-    .section-title {
-        font-size: var(--h2);
-        font-weight: 700;
-        text-align: center;
-        margin-bottom: var(--space-lg);
-        position: relative;
-        padding-bottom: 1%;
-        margin-top: 16px;
-        
-    }
+.overline {
+    display: block;
+    font-size: 14px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--fsp-purple-light);
+    margin-bottom: var(--space-sm);
+}
 
-    .section-title::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 80px;
-        height: 4px;
-        background: var(--fsp-purple-gradient);
-        border-radius: 2px;
-    }
+.services-title {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 300;
+    color: var(--fsp-cream);
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    margin-bottom: var(--space-md);
+}
 
-    .service-card {
-        position: relative;
-        background: rgba(255,255,255,0.03);
-        border: 2px solid var(--fsp-purple-gradient);
-        padding: var(--space-lg);
-        border-radius: 12px;
-        overflow: hidden;
-        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        border: 2px solid var(--fsp-purple-dark);
+.services-subtitle {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: var(--fsp-purple-light);
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    padding: var(--space-md) 0;
+}
+
+.service-card {
+    position: relative;
+    background: rgba(85, 59, 139, 0.02);
+    border: 1px solid rgba(85, 59, 139, 0.08);
+    border-radius: 12px;
+    padding: 40px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.service-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+    padding: 1px;
+    background: linear-gradient(
+        135deg,
+        var(--fsp-purple-dark) 0%,
+        var(--fsp-purple-light) 100%
+    );
+    -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+    mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0.1;
+    transition: opacity 0.4s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-4px);
+}
+
+.service-card:hover::before {
+    opacity: 0.3;
+}
+
+.service-icon-wrapper {
+    position: relative;
+    width: 72px;
+    height: 72px;
+    margin-bottom: 24px;
+}
+
+.icon-background {
+    position: absolute;
+    inset: 0;
+    border-radius: 16px;
+    background: linear-gradient(135deg, rgba(85, 59, 139, 0.1) 0%, rgba(139, 122, 176, 0.1) 100%);
+    backdrop-filter: blur(8px);
+    transform: rotate(45deg);
+    transition: transform 0.4s ease;
+}
+
+.service-card:hover .icon-background {
+    transform: rotate(225deg);
+}
+
+.service-icon {
+    position: relative;
+    font-size: 28px;
+    color: var(--fsp-purple-light);
+    line-height: 72px;
+}
+
+.service-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.service-title {
+    font-size: 20px;
+    color: var(--fsp-cream);
+    font-weight: 500;
+    letter-spacing: 0;
+    margin-bottom: 16px;
+}
+
+.service-description {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--fsp-purple-light);
+    opacity: 0.9;
+    margin-bottom: 24px;
+    min-height: 72px;
+}
+
+.service-features {
+    list-style: none;
+    padding: 0;
+    margin: auto 0 0;
+    text-align: left;
+}
+
+.service-features li {
+    position: relative;
+    padding-left: 24px;
+    margin-bottom: 12px;
+    color: var(--fsp-cream);
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+.service-features li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 12px;
+    height: 12px;
+    background: linear-gradient(135deg, var(--fsp-purple-light) 0%, var(--fsp-purple-dark) 100%);
+    border-radius: 50%;
+}
+
+@media (max-width: 1400px) {
+    .services-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 1024px) {
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .services-grid {
+        grid-template-columns: 1fr;
     }
     
-    .services-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-        gap: 2rem;
-        padding: 0 var(--space-lg);
+    .service-card {
+        padding: 32px;
     }
-
-    .service-card::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: var(--fsp-purple-gradient);
-        opacity: 0;
-        z-index: 1;
-        transition: opacity 0.6s ease;
-    }
-
-    .service-card:hover {
-        transform: translateY(-15px);
-        border-color: var(--fsp-blue);
-    }
-
-    .service-card:hover::before {
-        opacity: 0.1;
-    }
-
-    .service-content {
-        position: relative;
-        z-index: 2;
-    }
-
-    .service-icon {
-        font-size: 3rem;
-        background: var(--fsp-purple-gradient);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        margin-bottom: var(--space-md);
-        transition: transform 0.4s ease;
-    }
-
-    .service-card:hover .service-icon {
-        transform: scale(1.2);
-    }
-
-    .service-title {
-        font-size: var(--h3);
-        margin-bottom: var(--space-sm);
-        color: var(--fsp-cream);
-    }
-
-    .service-description {
-        color: rgba(255,255,255,0.8);
-        line-height: 1.8;
-    }
-
+}
     
 .projects-section {
     background: var(--fsp-black);
@@ -1447,137 +1521,86 @@ textarea.minimal-input {
     transform: translateY(-2px);
 }
 
+/* Mobile-only styles - won't affect desktop */
 @media (max-width: 1024px) {
+    /* First make the two-column container stack */
     .cta-container {
         grid-template-columns: 1fr;
-        gap: 60px;
-    }
-
-    .cta-value {
-        padding-right: 0;
-        text-align: center;
-    }
-
-    .value-metrics {
-        justify-content: center;
-    }
-
-    .value-description {
+        gap: 2rem;
+        padding: 1.5rem;
+        max-width: 600px;
         margin: 0 auto;
     }
 
-    .value-headline {
-        font-size: 48px;
-    }
-}
-
-@media (max-width: 768px) {
-    .cta-impact {
-        padding: 80px 0;
+    /* Now the critical fix - force single column inside the card */
+    .action-card .card-content {
+        display: flex !important; /* Override any existing display */
+        flex-direction: column !important;
+        align-items: center;
+        gap: 1.5rem;
     }
 
-    .action-card {
-        padding: 32px;
+    .card-label {
+        text-align: center;
+        margin-bottom: 0.5rem;
+    }
+
+    .card-headline {
+        text-align: center;
+        font-size: 1.75rem;
+        margin-bottom: 1rem;
+    }
+
+    .card-description {
+        text-align: center;
+        max-width: 400px;
+        margin: 0 auto 1.5rem;
+    }
+
+    .action-features {
+        width: 100%;
+        background: rgba(85, 59, 139, 0.05);
+        border-radius: 16px;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .feature {
+        border-bottom: 1px solid rgba(139, 122, 176, 0.08);
+        padding: 0.75rem 0;
+    }
+
+    .feature:last-child {
+        border-bottom: none;
     }
 
     .action-buttons {
+        width: 100%;
+        display: flex;
         flex-direction: column;
+        gap: 1rem;
     }
 
-    .value-headline {
-        font-size: 36px;
-    }
-
-    .metric-value {
-        font-size: 36px;
+    .btn-primary,
+    .btn-secondary {
+        width: 100%;
+        justify-content: center;
     }
 }
 
-<section class="service-area" id="service-area">
-    <div class="service-area-container">
-        <div class="service-box map-box">
-            <div class="glow-effect"></div>
-            <div class="image-container">
-                <div class="image-wrapper">
-                    <img 
-                        src="https://i.postimg.cc/jjS9hYDT/Untitled.png" 
-                        alt="Flow State Painting service area map" 
-                        class="map-image"
-                    >
-                    <div class="map-overlay"></div>
-                </div>
-            </div>
-        </div>
+@media (max-width: 480px) {
+    .action-card {
+        padding: 1.5rem;
+    }
 
-        <div class="service-box content-box">
-            <div class="glow-effect"></div>
-            <div class="content-inner">
-                <div class="title-section">
-                    <h2 class="gradient-text">Service Areas</h2>
-                    <p class="subtitle">Gold Coast & Northern Rivers Premium Painters</p>
-                </div>
+    .card-headline {
+        font-size: 1.5rem;
+    }
 
-                <div class="regions-container">
-                    <div class="region">
-                        <h3>Gold Coast</h3>
-                        <ul>
-                            <li>
-                                <span class="location-marker"></span>
-                                <span>Coolangatta</span>
-                            </li>
-                            <li>
-                                <span class="location-marker"></span>
-                                <span>Tweed Heads</span>
-                            </li>
-                            <li>
-                                <span class="location-marker"></span>
-                                <span>Kingscliff</span>
-                            </li>
-                            <li>
-                                <span class="location-marker"></span>
-                                <span>Casuarina</span>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="region">
-                        <h3>Northern Rivers</h3>
-                        <ul>
-                            <li>
-                                <span class="location-marker"></span>
-                                <span>Byron Bay</span>
-                            </li>
-                            <li>
-                                <span class="location-marker"></span>
-                                <span>Ballina</span>
-                            </li>
-                            <li>
-                                <span class="location-marker"></span>
-                                <span>Lennox Head</span>
-                            </li>
-                            <li>
-                                <span class="location-marker"></span>
-                                <span>Evans Head</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-                <a href="#contact" class="cta-button">
-                    <span class="cta-text">Get Your Quote</span>
-                    <span class="cta-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </span>
-                    <div class="cta-background"></div>
-                </a>
-            </div>
-        </div>
-    </div>
-</section>
-
-<style>
+    .action-features {
+        padding: 1.25rem;
+    }
+}
 .service-area {
     padding: clamp(3rem, 8vw, 6rem) var(--space-md);
     background: var(--fsp-black);
@@ -2235,131 +2258,362 @@ blockquote {
 }
 
     /* Stats Section */
-    .stats {
-    padding: 120px 0;
-    background: var(--fsp-black);
+   .stats-section {
     position: relative;
+    background-color: var(--fsp-black);
+    padding: clamp(5rem, 12vh, 10rem) 0;
     overflow: hidden;
 }
 
-.stats-container {
+.premium-overlay {
+    position: absolute;
+    inset: 0;
+    background: 
+        radial-gradient(circle at 20% 20%, rgba(85, 59, 139, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(85, 59, 139, 0.08) 0%, transparent 50%),
+        linear-gradient(180deg, transparent, rgba(85, 59, 139, 0.03));
+}
+
+.container {
     max-width: 1400px;
     margin: 0 auto;
-    padding: 0 24px;
+    padding: 0 var(--space-lg);
+    position: relative;
+    z-index: 2;
 }
 
+/* Header Styles */
 .stats-header {
     text-align: center;
-    margin-bottom: 80px;
+    margin-bottom: clamp(4rem, 10vh, 6rem);
 }
 
-.stats-overline {
-    font-size: 14px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: var(--fsp-blue);
+.elegant-overline {
     display: block;
-    margin-bottom: 16px;
+    font-size: 14px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--fsp-purple-light);
+    margin-bottom: 1.5rem;
+    font-weight: 400;
+    opacity: 0.9;
 }
 
-.stats-header h2 {
-    font-size: 48px;
-    font-weight: 300;
+.premium-title {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 200;
     color: var(--fsp-cream);
-    letter-spacing: -0.5px;
-    max-width: 600px;
-    margin: 0 auto;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    margin-bottom: 2rem;
 }
 
-.stats-grid {
+.elegant-separator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    margin: 0 auto;
+    max-width: 400px;
+}
+
+.separator-line {
+    height: 1px;
+    flex: 1;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--fsp-purple-light),
+        transparent
+    );
+}
+
+.separator-icon {
+    width: 8px;
+    height: 8px;
+    background: var(--fsp-purple-light);
+    transform: rotate(45deg);
+}
+
+/* Stats Grid */
+.stats-showcase {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 24px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    padding: 2rem 0;
 }
 
 .stat-card {
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 16px;
-    padding: 40px;
     position: relative;
+}
+
+.card-glass {
+    position: relative;
+    background: rgba(85, 59, 139, 0.03);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 1px;
+    overflow: hidden;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-glass::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(
+        135deg,
+        rgba(139, 122, 176, 0.2),
+        rgba(85, 59, 139, 0.2)
+    );
+    -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    mask: 
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+}
+
+.card-content {
+    position: relative;
+    padding: 2.5rem 2rem;
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    transition: all 0.3s ease;
+    flex-direction: column;
+    gap: 2rem;
 }
 
-.stat-card:hover {
-    border-color: var(--fsp-blue);
-    transform: translateY(-4px);
-}
-
-.stat-content {
-    flex: 1;
-}
-
-.stat-value {
-    font-size: 48px;
-    font-weight: 200;
+/* Icon Styles */
+.icon-wrapper {
+    position: relative;
+    width: 56px;
+    height: 56px;
+    background: var(--fsp-purple-gradient);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
     color: var(--fsp-cream);
-    line-height: 1;
-    margin-bottom: 12px;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.icon-glow {
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    background: var(--fsp-purple-gradient);
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    filter: blur(8px);
+}
+
+/* Value Styles */
+.stat-value-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.value-container {
     display: flex;
     align-items: baseline;
     gap: 4px;
 }
 
-.symbol {
-    font-size: 24px;
-    color: var(--fsp-blue);
+.counter {
+    font-size: 44px;
+    font-weight: 200;
+    color: var(--fsp-cream);
+    line-height: 1;
 }
 
-.stat-label {
+.symbol {
+    font-size: 20px;
+    color: var(--fsp-purple-light);
+    font-weight: 500;
+}
+
+.stat-details h3 {
+    color: var(--fsp-cream);
     font-size: 16px;
     font-weight: 500;
-    color: var(--fsp-cream);
-    margin-bottom: 8px;
+    margin-bottom: 4px;
 }
 
-.stat-context {
+.stat-details p {
+    color: var(--fsp-purple-light);
     font-size: 14px;
-    color: rgba(255, 255, 255, 0.6);
+    opacity: 0.9;
 }
 
-.stat-icon {
-    color: var(--fsp-blue);
+/* Progress Indicator */
+.progress-indicator {
+    margin-top: auto;
+}
+
+.progress-line {
+    height: 2px;
+    background: rgba(139, 122, 176, 0.1);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0;
+    background: var(--fsp-purple-gradient);
+    transition: width 2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Hover Effects */
+.stat-card:hover .card-glass {
+    transform: translateY(-8px);
+}
+
+.stat-card:hover .icon-wrapper {
+    transform: scale(1.1) rotate(-10deg);
+}
+
+.stat-card:hover .icon-glow {
     opacity: 0.5;
-    transition: all 0.3s ease;
 }
 
-.stat-card:hover .stat-icon {
-    opacity: 1;
-    transform: scale(1.1);
+@media (max-width: 1200px) {
+    .stats-showcase {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 @media (max-width: 768px) {
-    .stats {
-        padding: 80px 0;
-    }
-
-    .stats-header h2 {
-        font-size: 32px;
-    }
-
-    .stats-grid {
+    .stats-showcase {
         grid-template-columns: 1fr;
+    }
+    
+    .stat-card {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .card-content {
+        padding: 2rem 1.5rem;
+    }
+}
+@media (max-width: 1024px) {
+    .stats-showcase {
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+        padding: 0.5rem;
+        max-width: 450px;
+        margin: 0 auto;
     }
 
     .stat-card {
-        padding: 24px;
+        width: 100%;
+        aspect-ratio: auto;
+        height: auto;
     }
 
-    .stat-value {
-        font-size: 36px;
+    .card-glass {
+        background: rgba(85, 59, 139, 0.03);
+        border-radius: 16px;
     }
 
-    .symbol {
-        font-size: 20px;
+    .card-content {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        grid-template-areas: 
+            "icon values"
+            "progress progress";
+        gap: 1.5rem;
+        padding: 1.5rem;
+        align-items: center;
+    }
+
+    .icon-wrapper {
+        grid-area: icon;
+        width: 48px;
+        height: 48px;
+        margin: 0;
+    }
+
+    .stat-value-wrapper {
+        grid-area: values;
+        text-align: left;
+        padding-left: 0.5rem;
+    }
+
+    .progress-indicator {
+        grid-area: progress;
+        margin-top: 0.5rem;
+    }
+
+    .counter {
+        font-size: 32px;
+    }
+
+    /* Ensure all cards are identical */
+    .stat-card {
+        min-height: unset;
+        transform: none !important;
+    }
+
+    /* Header adjustments */
+    .stats-header {
+        padding: 0 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .premium-title {
+        font-size: 2rem;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .stats-showcase {
+        padding: 0;
+    }
+
+    .card-content {
+        padding: 1.25rem;
+        gap: 1rem;
+    }
+
+    .counter {
+        font-size: 28px;
+    }
+
+    .stat-details h3 {
+        font-size: 0.9rem;
+    }
+
+    .stat-details p {
+        font-size: 0.8rem;
+    }
+
+    /* Remove complex animations on mobile */
+    .stat-card:hover {
+        transform: none;
+    }
+
+    .icon-glow {
+        display: none;
+    }
+}
+
+/* Touch optimization */
+@media (hover: none) {
+    .stat-card {
+        transform: none !important;
+    }
+
+    .stat-card:active {
+        opacity: 0.9;
     }
 }
  /* Footer Section */
@@ -2703,29 +2957,156 @@ blockquote {
         </div>
     </section>
 
-<section class="services" id="services">
+<section class="services" id="premium-painting-services">
     <div class="services-content">
-        <h2 class="section-title">Our Services</h2>
+        <div class="services-header">
+            <span class="overline">Professional Excellence</span>
+            <h2 class="services-title">Expert Painting Solutions</h2>
+            <p class="services-subtitle">Delivering exceptional craftsmanship with superior attention to detail</p>
+        </div>
+
         <div class="services-grid">
-            <div class="service-card">
-                <div class="service-content">
+            <!-- Interior Excellence -->
+            <div class="service-card" data-aos="fade-up" data-aos-delay="50">
+                <div class="service-icon-wrapper">
+                    <div class="icon-background"></div>
                     <i class="fas fa-home service-icon"></i>
-                    <h3 class="service-title">New Homes</h3>
-                    <p class="service-description">Premium finishing for your new build with meticulous attention to detail and superior products.</p>
+                </div>
+                <div class="service-content">
+                    <h3 class="service-title">Interior Excellence</h3>
+                    <p class="service-description">Premium interior finishes with meticulous attention to detail and superior preparation.</p>
+                    <ul class="service-features">
+                        <li><span>Custom Color Consultation</span></li>
+                        <li><span>Premium Product Selection</span></li>
+                        <li><span>Professional Preparation</span></li>
+                        <li><span>Perfect Surface Finish</span></li>
+                    </ul>
                 </div>
             </div>
-            <div class="service-card">
+
+            <!-- Exterior Mastery -->
+            <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="service-icon-wrapper">
+                    <div class="icon-background"></div>
+                    <i class="fas fa-building service-icon"></i>
+                </div>
                 <div class="service-content">
-                    <i class="fas fa-paint-roller service-icon"></i>
-                    <h3 class="service-title">Repaints</h3>
-                    <p class="service-description">Transform your existing space with our expert repaint service, breathing new life into every surface.</p>
+                    <h3 class="service-title">Exterior Mastery</h3>
+                    <p class="service-description">Weather-resistant solutions ensuring lasting protection and timeless appeal.</p>
+                    <ul class="service-features">
+                        <li><span>Weather-Shield Technology</span></li>
+                        <li><span>UV-Resistant Coatings</span></li>
+                        <li><span>Surface Restoration</span></li>
+                        <li><span>Protective Finishes</span></li>
+                    </ul>
                 </div>
             </div>
-            <div class="service-card">
+
+            <!-- Commercial Solutions -->
+            <div class="service-card" data-aos="fade-up" data-aos-delay="150">
+                <div class="service-icon-wrapper">
+                    <div class="icon-background"></div>
+                    <i class="fas fa-city service-icon"></i>
+                </div>
                 <div class="service-content">
-                    <i class="fas fa-shield-alt service-icon"></i>
-                    <h3 class="service-title">Fully Insured</h3>
-                    <p class="service-description">Complete peace of mind with comprehensive insurance coverage for all our painting services.</p>
+                    <h3 class="service-title">Commercial Solutions</h3>
+                    <p class="service-description">Comprehensive painting services for businesses and commercial spaces.</p>
+                    <ul class="service-features">
+                        <li><span>Minimal Disruption</span></li>
+                        <li><span>After-Hours Service</span></li>
+                        <li><span>Safety Compliance</span></li>
+                        <li><span>Project Management</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Heritage Restoration -->
+            <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="service-icon-wrapper">
+                    <div class="icon-background"></div>
+                    <i class="fas fa-landmark service-icon"></i>
+                </div>
+                <div class="service-content">
+                    <h3 class="service-title">Heritage Restoration</h3>
+                    <p class="service-description">Specialized restoration techniques preserving historical integrity and charm.</p>
+                    <ul class="service-features">
+                        <li><span>Period-Specific Finishes</span></li>
+                        <li><span>Traditional Methods</span></li>
+                        <li><span>Authentic Materials</span></li>
+                        <li><span>Detail Preservation</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- New Construction -->
+            <div class="service-card" data-aos="fade-up" data-aos-delay="250">
+                <div class="service-icon-wrapper">
+                    <div class="icon-background"></div>
+                    <i class="fas fa-hard-hat service-icon"></i>
+                </div>
+                <div class="service-content">
+                    <h3 class="service-title">New Construction</h3>
+                    <p class="service-description">Comprehensive solutions for new builds with superior finishing standards.</p>
+                    <ul class="service-features">
+                        <li><span>Builder Collaboration</span></li>
+                        <li><span>Schedule Integration</span></li>
+                        <li><span>Quality Assurance</span></li>
+                        <li><span>Final Detailing</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Body Corporate -->
+            <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="service-icon-wrapper">
+                    <div class="icon-background"></div>
+                    <i class="fas fa-users service-icon"></i>
+                </div>
+                <div class="service-content">
+                    <h3 class="service-title">Body Corporate</h3>
+                    <p class="service-description">Professional solutions for strata and multi-residential properties.</p>
+                    <ul class="service-features">
+                        <li><span>Common Area Expertise</span></li>
+                        <li><span>Maintenance Programs</span></li>
+                        <li><span>Access Solutions</span></li>
+                        <li><span>Owner Corporation Liaison</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Decorative Finishes -->
+            <div class="service-card" data-aos="fade-up" data-aos-delay="350">
+                <div class="service-icon-wrapper">
+                    <div class="icon-background"></div>
+                    <i class="fas fa-paint-brush service-icon"></i>
+                </div>
+                <div class="service-content">
+                    <h3 class="service-title">Decorative Finishes</h3>
+                    <p class="service-description">Artistic techniques creating unique and sophisticated environments.</p>
+                    <ul class="service-features">
+                        <li><span>Textured Applications</span></li>
+                        <li><span>Feature Treatments</span></li>
+                        <li><span>Custom Effects</span></li>
+                        <li><span>Artistic Details</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Industrial Coating -->
+            <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="service-icon-wrapper">
+                    <div class="icon-background"></div>
+                    <i class="fas fa-industry service-icon"></i>
+                </div>
+                <div class="service-content">
+                    <h3 class="service-title">Industrial Coating</h3>
+                    <p class="service-description">Specialized industrial solutions ensuring durability and protection.</p>
+                    <ul class="service-features">
+                        <li><span>Protective Systems</span></li>
+                        <li><span>Safety Compliance</span></li>
+                        <li><span>Performance Coatings</span></li>
+                        <li><span>Technical Expertise</span></li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -2870,7 +3251,6 @@ blockquote {
 <section class="cta-impact">
     <div class="cta-bg"></div>
     <div class="cta-container">
-        <!-- Left Column -->
         <div class="cta-value">
             <div class="value-metrics">
                 <div class="metric">
@@ -2887,13 +3267,14 @@ blockquote {
             <p class="value-description">Join hundreds of satisfied homeowners who've elevated their properties with our premium painting expertise.</p>
         </div>
 
-        <!-- Right Column -->
         <div class="cta-action">
             <div class="action-card">
                 <div class="card-content">
-                    <span class="card-label">Free Consultation</span>
-                    <h3 class="card-headline">Get Your Premium Quote</h3>
-                    <p class="card-description">Professional assessment tailored to your property's unique requirements.</p>
+                    <div class="card-header">
+                        <span class="card-label">Free Consultation</span>
+                        <h3 class="card-headline">Get Your Premium Quote</h3>
+                        <p class="card-description">Professional assessment tailored to your property's unique requirements.</p>
+                    </div>
                     
                     <div class="action-features">
                         <div class="feature">
@@ -2915,7 +3296,6 @@ blockquote {
                             <span>Upfront Transparent Pricing</span>
                         </div>
                     </div>
-
                     <div class="action-buttons">
                         <a href="#contact" class="btn-primary">
                             Get Started
@@ -2931,9 +3311,7 @@ blockquote {
             </div>
         </div>
     </div>
-</section>
-
-<section class="service-area" id="service-area">
+</section><section class="service-area" id="service-area">
     <div class="service-area-container">
         <div class="service-box map-box">
             <div class="glow-effect"></div>
@@ -3101,76 +3479,123 @@ blockquote {
     
     <!-- stats Section -->
 
-<section class="stats" aria-label="Company Statistics">
-    <div class="stats-container">
-        <div class="stats-header">
-            <span class="stats-overline">Our Impact</span>
-            <h2>Trusted by homeowners across the Gold Coast</h2>
-        </div>
-
-        <div class="stats-grid">
-            <div class="stat-card" data-aos="fade-up" data-aos-delay="0">
-                <div class="stat-content">
-                    <div class="stat-value">
-                        <span class="counter" data-target="850">0</span>
-                        <span class="symbol">+</span>
-                    </div>
-                    <div class="stat-label">Projects Completed</div>
-                    <div class="stat-context">across the Gold Coast region</div>
-                </div>
-                <div class="stat-icon">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <path d="M3 21h18M3 7v1a3 3 0 003 3h12a3 3 0 003-3V7M6 21V10M18 21V10M3 7l9-4 9 4"/>
-                    </svg>
+<section class="stats-section" id="company-statistics">
+    <div class="premium-overlay"></div>
+    <div class="container">
+        <div class="stats-header" data-aos="fade-up">
+            <div class="header-content">
+                <span class="elegant-overline">Excellence in Numbers</span>
+                <h2 class="premium-title">Defining Industry Standards</h2>
+                <div class="elegant-separator">
+                    <span class="separator-line"></span>
+                    <span class="separator-icon"></span>
+                    <span class="separator-line"></span>
                 </div>
             </div>
+        </div>
 
+        <div class="stats-showcase">
             <div class="stat-card" data-aos="fade-up" data-aos-delay="100">
-                <div class="stat-content">
-                    <div class="stat-value">
-                        <span class="counter" data-target="98">0</span>
-                        <span class="symbol">%</span>
+                <div class="card-glass">
+                    <div class="card-content">
+                        <div class="icon-wrapper">
+                            <i class="fas fa-paint-roller"></i>
+                            <div class="icon-glow"></div>
+                        </div>
+                        <div class="stat-value-wrapper">
+                            <div class="value-container">
+                                <span class="counter" data-value="850">0</span>
+                                <span class="symbol">+</span>
+                            </div>
+                            <div class="stat-details">
+                                <h3>Premium Projects</h3>
+                                <p>Completed with Excellence</p>
+                            </div>
+                        </div>
+                        <div class="progress-indicator">
+                            <div class="progress-line">
+                                <div class="progress-fill"></div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="stat-label">Client Satisfaction</div>
-                    <div class="stat-context">based on client feedback</div>
-                </div>
-                <div class="stat-icon">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <path d="M12 15l-2 2-2-2M8 11V7a4 4 0 118 0v4"/>
-                        <circle cx="12" cy="12" r="10"/>
-                    </svg>
                 </div>
             </div>
 
             <div class="stat-card" data-aos="fade-up" data-aos-delay="200">
-                <div class="stat-content">
-                    <div class="stat-value">
-                        <span class="counter" data-target="15">0</span>
-                        <span class="symbol">+</span>
+                <div class="card-glass">
+                    <div class="card-content">
+                        <div class="icon-wrapper">
+                            <i class="fas fa-star"></i>
+                            <div class="icon-glow"></div>
+                        </div>
+                        <div class="stat-value-wrapper">
+                            <div class="value-container">
+                                <span class="counter" data-value="98">0</span>
+                                <span class="symbol">%</span>
+                            </div>
+                            <div class="stat-details">
+                                <h3>Client Satisfaction</h3>
+                                <p>Verified Excellence</p>
+                            </div>
+                        </div>
+                        <div class="progress-indicator">
+                            <div class="progress-line">
+                                <div class="progress-fill"></div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="stat-label">Years Experience</div>
-                    <div class="stat-context">of professional service</div>
-                </div>
-                <div class="stat-icon">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <path d="M12 8v4l3 3M12 2a10 10 0 100 20 10 10 0 000-20z"/>
-                    </svg>
                 </div>
             </div>
 
             <div class="stat-card" data-aos="fade-up" data-aos-delay="300">
-                <div class="stat-content">
-                    <div class="stat-value">
-                        <span class="counter" data-target="250">0</span>
-                        <span class="symbol">km</span>
+                <div class="card-glass">
+                    <div class="card-content">
+                        <div class="icon-wrapper">
+                            <i class="fas fa-award"></i>
+                            <div class="icon-glow"></div>
+                        </div>
+                        <div class="stat-value-wrapper">
+                            <div class="value-container">
+                                <span class="counter" data-value="15">0</span>
+                                <span class="symbol">+</span>
+                            </div>
+                            <div class="stat-details">
+                                <h3>Years Experience</h3>
+                                <p>Industry Leadership</p>
+                            </div>
+                        </div>
+                        <div class="progress-indicator">
+                            <div class="progress-line">
+                                <div class="progress-fill"></div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="stat-label">Service Range</div>
-                    <div class="stat-context">Tweed Heads to Evans Head</div>
                 </div>
-                <div class="stat-icon">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-                    </svg>
+            </div>
+
+            <div class="stat-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="card-glass">
+                    <div class="card-content">
+                        <div class="icon-wrapper">
+                            <i class="fas fa-map-marked-alt"></i>
+                            <div class="icon-glow"></div>
+                        </div>
+                        <div class="stat-value-wrapper">
+                            <div class="value-container">
+                                <span class="counter" data-value="250">0</span>
+                                <span class="symbol">km</span>
+                            </div>
+                            <div class="stat-details">
+                                <h3>Service Range</h3>
+                                <p>Gold Coast Coverage</p>
+                            </div>
+                        </div>
+                        <div class="progress-indicator">
+                            <div class="progress-line">
+                                <div class="progress-fill"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -3495,50 +3920,212 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize
     updateSlider();
 });
-function animateCounter(element, target) {
-    const duration = 2000; // Animation duration in milliseconds
-    const steps = 50; // Number of steps
-    const stepDuration = duration / steps;
-    let current = 0;
-    
-    const increment = target / steps;
-    
-    const counter = setInterval(() => {
-        current += increment;
-        
-        if (current >= target) {
-            element.textContent = target;
-            clearInterval(counter);
-        } else {
-            element.textContent = Math.floor(current);
+function animateValue(obj, start, end, duration) {
+    let startTimestamp = null;
+    const step = (timestamp) => {
+        if (!startTimestamp) startTimestamp = timestamp;
+        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+        const easedProgress = cubicBezier(0.4, 0, 0.2, 1)(progress);
+        obj.innerHTML = Math.floor(easedProgress * (end - start) + start);
+        if (progress < 1) {
+            window.requestAnimationFrame(step);
         }
-    }, stepDuration);
+    };
+    window.requestAnimationFrame(step);
 }
 
-// Intersection Observer for triggering animations
-const observerOptions = {
-    threshold: 0.5,
-    rootMargin: "0px"
-};
+function cubicBezier(x1, y1, x2, y2) {
+    return function(t) {
+        const cx = 3 * x1;
+        const bx = 3 * (x2 - x1) - cx;
+        const ax = 1 - cx - bx;
+        const cy = 3 * y1;
+        const by = 3 * (y2 - y1) - cy;
+        const ay = 1 - cy - by;
+        
+        function sampleCurveX(t) {
+            return ((ax * t + bx) * t + cx) * t;
+        }
+        
+        function sampleCurveY(t) {
+            return ((ay * t + by) * t + cy) * t;
+        }
+        
+        function solveCurveX(x) {
+            let t2 = x;
+            let derivative;
+            let x2;
+            
+            for (let i = 0; i < 8; i++) {
+                x2 = sampleCurveX(t2) - x;
+                if (Math.abs(x2) < 0.001) return t2;
+                derivative = (3 * ax * t2 + 2 * bx) * t2 + cx;
+                if (Math.abs(derivative) < 0.000001) break;
+                t2 -= x2 / derivative;
+            }
+            
+            let t0 = 0;
+            let t1 = 1;
+            t2 = x;
+            
+            while (t0 < t1) {
+                x2 = sampleCurveX(t2);
+                if (Math.abs(x2 - x) < 0.001) return t2;
+                if (x > x2) t0 = t2;
+                else t1 = t2;
+                t2 = (t1 - t0) * .5 + t0;
+            }
+            
+            return t2;
+        }
+        
+        return sampleCurveY(solveCurveX(t));
+    };
+}
 
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            const counters = entry.target.querySelectorAll('.counter');
-            counters.forEach(counter => {
-                const target = parseInt(counter.getAttribute('data-target'));
-                animateCounter(counter, target);
+            // Animate counters
+            entry.target.querySelectorAll('.counter').forEach(counter => {
+                const value = parseInt(counter.getAttribute('data-value'));
+                animateValue(counter, 0, value, 3000); // Slower animation (3 seconds)
             });
+            
+            // Animate progress bars
+            entry.target.querySelectorAll('.progress-fill').forEach(bar => {
+                setTimeout(() => {
+                    bar.style.width = '100%';
+                }, 300);
+            });
+            
             observer.unobserve(entry.target);
         }
     });
-}, observerOptions);
-
-// Start observing
-document.addEventListener('DOMContentLoaded', () => {
-    const statsSection = document.querySelector('.stats-grid');
-    observer.observe(statsSection);
+}, {
+    threshold: 0.2
 });
+document.addEventListener('DOMContentLoaded', () => {
+    const statsShowcase = document.querySelector('.stats-showcase');
+    if (statsShowcase) {
+        observer.observe(statsShowcase);
+    }
+
+    // Initialize AOS with premium animations
+    AOS.init({
+        duration: 1200,
+        once: true,
+        offset: 100,
+        easing: 'cubic-bezier(0.4, 0, 0.2, 1)',
+        mirror: false,
+        anchorPlacement: 'center-bottom'
+    });
+
+    // Add hover effect listeners
+    document.querySelectorAll('.stat-card').forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            const icon = card.querySelector('.icon-wrapper');
+            const glow = card.querySelector('.icon-glow');
+            
+            icon.style.transform = 'scale(1.1) rotate(-10deg)';
+            glow.style.opacity = '0.5';
+            
+            // Add subtle particle effect
+            createParticles(card);
+        });
+
+        card.addEventListener('mouseleave', () => {
+            const icon = card.querySelector('.icon-wrapper');
+            const glow = card.querySelector('.icon-glow');
+            
+            icon.style.transform = 'scale(1) rotate(0)';
+            glow.style.opacity = '0';
+        });
+    });
+});
+
+// Premium particle effect
+function createParticles(card) {
+    const particles = 5;
+    const colors = ['var(--fsp-purple-light)', 'var(--fsp-purple-dark)'];
+
+    for (let i = 0; i < particles; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'premium-particle';
+        
+        // Randomize particle properties
+        const size = Math.random() * 4 + 2;
+        const color = colors[Math.floor(Math.random() * colors.length)];
+        const left = Math.random() * 100;
+        const duration = Math.random() * 1 + 1;
+        const delay = Math.random() * 0.5;
+
+        particle.style.cssText = `
+            width: ${size}px;
+            height: ${size}px;
+            background: ${color};
+            left: ${left}%;
+            animation: floatParticle ${duration}s ease-in ${delay}s forwards;
+        `;
+
+        card.appendChild(particle);
+        
+        // Clean up particles
+        setTimeout(() => {
+            particle.remove();
+        }, (duration + delay) * 1000);
+    }
+}
+
+// Add this CSS for the particle animation
+const style = document.createElement('style');
+style.textContent = `
+    .premium-particle {
+        position: absolute;
+        bottom: 0;
+        border-radius: 50%;
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    @keyframes floatParticle {
+        0% {
+            transform: translateY(0) scale(1);
+            opacity: 0.8;
+        }
+        100% {
+            transform: translateY(-100px) scale(0);
+            opacity: 0;
+        }
+    }
+
+    .stat-card {
+        transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .stat-card:hover {
+        transform: translateY(-8px);
+    }
+
+    .stat-card::after {
+        content: '';
+        position: absolute;
+        inset: -1px;
+        background: var(--fsp-purple-gradient);
+        opacity: 0;
+        transition: opacity 0.6s ease;
+        border-radius: 20px;
+        z-index: -1;
+        filter: blur(8px);
+    }
+
+    .stat-card:hover::after {
+        opacity: 0.1;
+    }
+`;
+
+document.head.appendChild(style);
+
 document.addEventListener('DOMContentLoaded', () => {
     const comparisons = document.querySelectorAll('.comparison');
 
@@ -3615,6 +4202,42 @@ document.addEventListener('DOMContentLoaded', () => {
             handle.style.left = '50%';
         });
     });
+});
+document.addEventListener('DOMContentLoaded', function() {
+    AOS.init({
+        duration: 800,
+        once: true,
+        offset: 50,
+        easing: 'ease-out'
+    });
+
+    function equalizeHeights() {
+        const cards = document.querySelectorAll('.service-card');
+        const descriptions = document.querySelectorAll('.service-description');
+        
+        // Reset heights
+        cards.forEach(card => card.style.height = 'auto');
+        descriptions.forEach(desc => desc.style.height = 'auto');
+        
+        // Find max heights
+        let maxCardHeight = 0;
+        let maxDescHeight = 0;
+        
+        cards.forEach(card => {
+            maxCardHeight = Math.max(maxCardHeight, card.offsetHeight);
+        });
+        
+        descriptions.forEach(desc => {
+            maxDescHeight = Math.max(maxDescHeight, desc.offsetHeight);
+        });
+        
+        // Apply max heights
+        cards.forEach(card => card.style.height = `${maxCardHeight}px`);
+        descriptions.forEach(desc => desc.style.height = `${maxDescHeight}px`);
+    }
+
+    window.addEventListener('load', equalizeHeights);
+    window.addEventListener('resize', equalizeHeights);
 });
 
 </script>
