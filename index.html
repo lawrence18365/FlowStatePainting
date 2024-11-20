@@ -471,53 +471,164 @@ transform: scaleX(0);
 
  
     /* Projects Section */
-    .projects {
-        padding: var(--space-xl) 0;
-    }
+   .projects-section {
+    background: #000;
+    min-height: 100vh;
+    padding: 4rem 0;
+    user-select: none;
+}
 
-    .projects-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-        gap: 2rem;
-        margin-top: 4rem;
-    }
+.container {
+    width: min(1400px, 92%);
+    margin: 0 auto;
+}
 
-    .project-card {
-        position: relative;
-        height: 400px;
-        overflow: hidden;
-        border-radius: 8px;
-    }
+.title {
+    text-align: center;
+    color: #a78bfa;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 300;
+    margin-bottom: clamp(3rem, 6vw, 5rem);
+}
 
-    .project-image {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.6s ease;
-    }
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 580px), 1fr));
+    gap: clamp(2rem, 4vw, 3rem);
+    max-width: 1200px;
+    margin: 0 auto;
+}
 
-    .project-card:hover .project-image {
-        transform: scale(1.1);
-    }
+.comparison-wrapper {
+    height: min(70vh, 500px);
+    border-radius: 20px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.03);
+    position: relative;
+    touch-action: none;
+}
 
-    .project-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0,0,0,0.7);
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-    }
+.comparison-wrapper::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(45deg, #a78bfa, #7c3aed);
+    -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+    mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
 
-    .project-card:hover .project-overlay {
-        opacity: 1;
+.comparison {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.comparison-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+}
+
+.comparison-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    will-change: width;
+}
+
+.handle {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 2px;
+    height: 100%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    will-change: left;
+}
+
+.handle-line {
+    flex: 1;
+    width: 2px;
+    background: #fafafa;
+}
+
+.handle-circle {
+    width: clamp(32px, 5vw, 40px);
+    height: clamp(32px, 5vw, 40px);
+    background: #fafafa;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+    cursor: grab;
+    transition: transform 0.2s ease;
+}
+
+.handle-circle:active {
+    cursor: grabbing;
+    transform: scale(1.1);
+}
+
+.labels {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 1.5rem;
+    right: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    pointer-events: none;
+}
+
+.label {
+    padding: 0.5rem 1rem;
+    background: rgba(0, 0, 0, 0.75);
+    color: #fafafa;
+    border-radius: 100px;
+    font-size: clamp(0.75rem, 2vw, 0.875rem);
+    backdrop-filter: blur(8px);
+    white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+    .comparison-wrapper {
+        height: min(60vh, 400px);
     }
+    
+    .labels {
+        bottom: 1rem;
+        left: 1rem;
+        right: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .comparison-wrapper {
+        height: min(50vh, 300px);
+    }
+}
 
     /* Contact Section */
     .contact {
@@ -743,7 +854,7 @@ font-weight: 300;
 color: var(--fsp-cream);
 letter-spacing: -0.02em;
 line-height: 1.2;
-margin-bottom: var(--space-md);
+margin-bottom: 25px;
 }
 
 .services-subtitle {
@@ -1247,89 +1358,146 @@ margin-right: 12px;
 }
 
 /* Mobile Styles */
-@media (max-width: 768px) {
-.process {
-    padding: 80px 0;
-}
+@media screen and (max-width: 991px) {
+  /* Core process section */
+  .process {
+    padding: 60px 0;
+    position: relative;
+  }
 
-.section-title {
-    font-size: 32px;
-}
+  .process-container {
+    padding: 0 20px;
+  }
 
-.process-subtitle {
-    font-size: 16px;
-    margin-bottom: 60px;
-    padding: 0 24px;
-}
+  /* Timeline structure */
+  .timeline {
+    position: relative;
+    padding: 40px 0;
+  }
 
-.timeline-progress {
-    left: 30px;
-}
+  .timeline-progress {
+    left: 24px;
+    width: 2px;
+  }
 
-.timeline-item {
+  /* Timeline items */
+  .timeline-item {
     width: 100%;
-    margin: 0 0 60px !important;
-    padding: 0 0 0 60px !important;
-}
+    margin: 0 0 60px;
+    padding-left: 60px;
+    padding-right: 20px;
+  }
 
-.timeline-item.right {
+  .timeline-item.right {
     margin-left: 0;
-}
+    padding-left: 60px;
+  }
 
-.step-number {
+  .timeline-item.left {
+    padding-right: 20px;
+  }
+
+  /* Step numbers positioning fix */
+  .step-number {
+    position: absolute;
     width: 40px;
     height: 40px;
-    font-size: 18px;
-    left: 10px !important;
+    top: -20px;
+    left: 5px !important;
     right: auto !important;
-    top: 20px;
-}
+    font-size: 18px;
+    z-index: 2;
+    border-radius: 50%;
+    background: var(--fsp-blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(66, 183, 231, 0.2);
+  }
 
-.timeline-content {
-    padding: 24px;
-}
+  /* Content box styling */
+  .timeline-content {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(66, 183, 231, 0.1);
+    border-radius: 12px;
+    padding: 35px 24px 24px;
+    position: relative;
+  }
 
-.content-wrapper h3 {
+  /* Typography adjustments */
+  .content-wrapper h3 {
     font-size: 20px;
-    margin-bottom: 12px;
-}
-
-.content-wrapper p {
-    font-size: 15px;
     margin-bottom: 16px;
-}
+    padding-right: 20px;
+  }
 
-.timeline-features li {
+  .content-wrapper p {
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    color: rgba(245, 245, 220, 0.7);
+  }
+
+  /* Feature list styling */
+  .timeline-features {
+    margin: 0;
+    padding: 0;
+  }
+
+  .timeline-features li {
     font-size: 14px;
-}
+    padding: 8px 0;
+    color: rgba(245, 245, 220, 0.7);
+    display: flex;
+    align-items: center;
+  }
+
+  .timeline-features li::before {
+    width: 6px;
+    height: 6px;
+    margin-right: 12px;
+  }
 }
 
-/* Tablet Optimization */
-@media (min-width: 769px) and (max-width: 1024px) {
-.timeline-item.left {
-    padding-right: 60px;
-}
+/* Smaller mobile devices */
+@media screen and (max-width: 480px) {
+  .process {
+    padding: 40px 0;
+  }
 
-.timeline-item.right {
-    padding-left: 60px;
-}
+  .timeline-item {
+    padding-left: 50px;
+    padding-right: 15px;
+    margin-bottom: 50px;
+  }
 
-.step-number {
-    width: 50px;
-    height: 50px;
-    font-size: 20px;
-}
+  .step-number {
+    width: 35px;
+    height: 35px;
+    font-size: 16px;
+    top: -18px;
+    left: 3px !important;
+  }
 
-.left .step-number {
-    right: -85px;
-}
+  .timeline-content {
+    padding: 30px 20px 20px;
+  }
 
-.right .step-number {
-    left: -85px;
-}
-}
+  .content-wrapper h3 {
+    font-size: 18px;
+    margin-bottom: 14px;
+  }
 
+  .content-wrapper p {
+    font-size: 14px;
+    margin-bottom: 16px;
+  }
 
+  .timeline-features li {
+    font-size: 13px;
+    padding: 6px 0;
+  }
+}
 .cta-impact {
 position: relative;
 padding: 120px 0;
@@ -2975,7 +3143,6 @@ color: var(--fsp-blue);
 <section class="services" id="premium-painting-services">
 <div class="services-content">
     <div class="services-header">
-        <span class="overline">Professional Excellence</span>
         <h2 class="services-title">Expert Painting Solutions</h2>
         <p class="services-subtitle">Delivering exceptional craftsmanship with superior attention to detail</p>
     </div>
@@ -3137,10 +3304,10 @@ color: var(--fsp-blue);
         <div class="comparison-wrapper">
             <div class="comparison">
                 <!-- After image as base -->
-                <img src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f" alt="After" class="comparison-image">
+                <img src="https://i.postimg.cc/LsqG0DGr/Screenshot-20241111-191958-Gallery-1.webp" alt="After" class="comparison-image">
                 <!-- Before image with overlay -->
                 <div class="comparison-overlay">
-                    <img src="https://images.unsplash.com/photo-1568992687947-868a62a9f521" alt="Before" class="comparison-image">
+                    <img src="https://i.postimg.cc/jdNvD9Pg/Screenshot-20241111-192020-Gallery-1-1.webp" alt="Before" class="comparison-image">
                 </div>
                 <!-- Handle -->
                 <div class="handle">
@@ -3163,9 +3330,9 @@ color: var(--fsp-blue);
         <!-- Second comparison -->
         <div class="comparison-wrapper">
             <div class="comparison">
-                <img src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f" alt="After" class="comparison-image">
+                <img src="https://i.postimg.cc/W1v8gn72/20231118-141746-1-1.webp" alt="After" class="comparison-image">
                 <div class="comparison-overlay">
-                    <img src="https://images.unsplash.com/photo-1568992687947-868a62a9f521" alt="Before" class="comparison-image">
+                    <img src="https://i.postimg.cc/bYZmhdJj/20230828-075107-1.webp" alt="Before" class="comparison-image">
                 </div>
                 <div class="handle">
                     <span class="handle-line"></span>
