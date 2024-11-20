@@ -1539,6 +1539,7 @@ display: flex;
 align-items: center;
 gap: 40px;
 margin-bottom: 48px;
+justify-content: center;
 }
 
 .metric {
@@ -1581,6 +1582,7 @@ margin-bottom: 24px;
 background: linear-gradient(to right, #fff, rgba(255,255,255,0.8));
 -webkit-background-clip: text;
 -webkit-text-fill-color: transparent;
+text-align: center;
 }
 
 .value-description {
@@ -1589,6 +1591,7 @@ line-height: 1.6;
 color: rgba(255, 255, 255, 0.7);
 max-width: 500px;
 }
+
 
 /* Right Column Styles */
 .action-card {
@@ -1715,7 +1718,9 @@ transform: translateY(-2px);
     max-width: 600px;
     margin: 0 auto;
 }
-
+.value-description {
+text-align: center;
+}
 /* Now the critical fix - force single column inside the card */
 .action-card .card-content {
     display: flex !important; /* Override any existing display */
