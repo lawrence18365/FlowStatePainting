@@ -2638,191 +2638,6 @@
         transform: none;
     }
     
-    .icon-glow {
-        display: none;
-    }
-    }
-    
-    /* Touch optimization */
-    @media (hover: none) {
-    .stat-card {
-        transform: none !important;
-    }
-    
-    .stat-card:active {
-        opacity: 0.9;
-    }
-    }
-    /* Footer Section */
-    .footer {
-    background: var(--fsp-black);
-    padding: 120px 0 0;
-    color: var(--fsp-cream);
-    position: relative;
-    }
-    
-    .footer-inner {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0 32px;
-    }
-    
-    .footer-primary {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 120px;
-    margin-bottom: 120px;
-    }
-    
-    .footer-logo {
-    width: 180px;
-    height: auto;
-    }
-    
-    .footer-content {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 80px;
-    }
-    
-    .footer-col h4 {
-    color: rgba(255, 255, 255, 0.4);
-    font-size: 12px;
-    font-weight: 400;
-    letter-spacing: 2px;
-    margin-bottom: 32px;
-    }
-    
-    .footer-col nav {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    }
-    
-    .footer-col a {
-    color: var(--fsp-cream);
-    text-decoration: none;
-    font-size: 15px;
-    transition: color 0.3s ease;
-    }
-    
-    .footer-col a:hover {
-    color: var(--fsp-blue);
-    }
-    
-    .footer-col span {
-    color: rgba(255, 255, 255, 0.4);
-    font-size: 15px;
-    }
-    
-    .footer-secondary {
-    border-top: 1px solid rgba(255, 255, 255, 0.06);
-    padding: 32px 0;
-    }
-    
-    .footer-bottom-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    }
-    
-    .copyright {
-    color: rgba(255, 255, 255, 0.4);
-    font-size: 14px;
-    }
-    
-    .social-links {
-    display: flex;
-    gap: 24px;
-    }
-    
-    .social-links a {
-    color: rgba(255, 255, 255, 0.4);
-    transition: color 0.3s ease;
-    font-size: 18px;
-    }
-    
-    .social-links a:hover {
-    color: var(--fsp-blue);
-    }
-    
-    .footer-right {
-    display: flex;
-    gap: 32px;
-    }
-    
-    .footer-right a {
-    color: rgba(255, 255, 255, 0.4);
-    text-decoration: none;
-    font-size: 14px;
-    transition: color 0.3s ease;
-    }
-    
-    .footer-right a:hover {
-    color: var(--fsp-blue);
-    }
-    .designer-signature {
-        margin-top: 24px;
-        text-align: center;
-        border-top: 1px solid rgba(255, 255, 255, 0.06);
-        padding-top: 24px;
-    }
-    
-    .designer-signature a {
-        color: rgba(255, 255, 255, 0.4);
-        text-decoration: none;
-        font-size: 14px;
-        transition: color 0.3s ease;
-    }
-    
-    .designer-signature a:hover {
-        color: var(--fsp-blue);
-    }
-    
-    @media (max-width: 768px) {
-        .designer-signature {
-            margin-top: 16px;
-            padding-top: 16px;
-        }
-    }
-    /* Mobile Styles */
-    @media (max-width: 1024px) {
-    .footer {
-        padding: 80px 0 0;
-    }
-    
-    .footer-primary {
-        grid-template-columns: 1fr;
-        gap: 60px;
-        margin-bottom: 80px;
-    }
-    
-    .footer-content {
-        gap: 40px;
-    }
-    }
-    
-    @media (max-width: 768px) {
-    .footer-inner {
-        padding: 0 24px;
-    }
-    
-    .footer-content {
-        grid-template-columns: 1fr;
-        gap: 40px;
-    }
-    
-    .footer-bottom-content {
-        flex-direction: column;
-        gap: 24px;
-        align-items: center;
-        text-align: center;
-    }
-    
-    .footer-right {
-        gap: 24px;
-    }
-    }
     /* Awards & Certifications Banner */
     .awards-banner {
         padding: var(--space-md) 0;
@@ -4340,80 +4155,270 @@ select.minimal-input option {
         <span class="btn-arrow">→</span>
     </button>
 </form>
-    <!-- Footer -->
-    <!-- Footer HTML Structure -->
-    <footer class="footer">
-    <div class="footer-inner">
-        <!-- Main Footer -->
-        <div class="footer-primary">
-            <!-- Logo Column -->
-            <div class="footer-brand">
-                <img src="https://i.postimg.cc/3rBt5kgk/0e2880b0-03f8-4e3b-8aff-c4d4e32af853-1-removebg-preview.png" alt="Flow State Painting" class="footer-logo">
-            </div>
+ 
+    <style>
+:root {
+  --primary: #000000;
+  --secondary: #ffffff;
+  --accent: #007AFF;
+  --text-muted: rgba(255, 255, 255, 0.6);
+}
+
+.footer {
+  background: var(--primary);
+  color: var(--secondary);
+  padding: 80px 0 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 60px;
+  margin-bottom: 60px;
+}
+
+.brand-section img {
+  width: 180px;
+  margin-bottom: 24px;
+}
+
+.brand-section p {
+  color: var(--text-muted);
+  line-height: 1.6;
+  font-size: 14px;
+  max-width: 300px;
+}
+
+.footer-section h4 {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+.hours-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.hours-list li {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.hours-list li.current-day {
+  color: var(--secondary);
+  font-weight: 500;
+}
+
+.contact-list {
+  list-style: none;
+  padding: 0;
+}
+
+.contact-list li {
+  margin-bottom: 16px;
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.contact-list a {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.contact-list a:hover {
+  color: var(--accent);
+}
+
+.map-container {
+  width: 100%;
+  height: 200px;
+  margin-top: 20px;
+}
+
+.map-container iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 8px;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 24px 0;
+  margin-top: 40px;
+}
+
+.footer-bottom-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.social-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  margin-left: 24px;
+  font-size: 20px;
+  transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+  color: var(--accent);
+}
+
+.copyright {
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+@media (max-width: 968px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 576px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .footer-bottom-content {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+  
+  .social-links {
+    margin-top: 20px;
+  }
+  
+  .social-links a {
+    margin: 0 12px;
+  }
+}
+.designer-signature {
+    background: #000000;
+    padding: 16px 0;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+.signature-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 13px;
+    letter-spacing: 0.3px;
+}
+
+.signature-content a {
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.signature-content a:hover {
+    color: #007AFF;
+}
+
+.signature-divider {
+    margin: 0 8px;
+    color: rgba(255, 255, 255, 0.2);
+}
+
+@media (max-width: 576px) {
+    .signature-content {
+        flex-direction: column;
+        gap: 4px;
+    }
     
-            <!-- Navigation Columns -->
-            <div class="footer-content">
-                <div class="footer-col">
-                    <h4>SERVICES</h4>
-                    <nav>
-                        <a href="/residential">Residential</a>
-                        <a href="/commercial">Commercial</a>
-                        <a href="/new-builds">New Builds</a>
-                        <a href="/consultation">Consultation</a>
-                    </nav>
-                </div>
-    
-                <div class="footer-col">
-                    <h4>COMPANY</h4>
-                    <nav>
-                        <a href="/about">About</a>
-                        <a href="/process">Process</a>
-                        <a href="/projects">Projects</a>
-                        <a href="/contact">Contact</a>
-                    </nav>
-                </div>
-    
-                <div class="footer-col">
-                    <h4>CONTACT</h4>
-                    <nav>
-                        <a href="tel:0459353449">0459 353 449</a>
-                        <a href="mailto:contact@flowstatepainting.com.au">Email Us</a>
-                        <span>Tweed Heads — Evans Head</span>
-                        <span>ABN: 54 848 033 030</span>
-                    </nav>
-                </div>
-            </div>
+    .signature-divider {
+        display: none;
+    }
+}
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-grid">
+        <div class="brand-section">
+          <img src="https://i.postimg.cc/3rBt5kgk/0e2880b0-03f8-4e3b-8aff-c4d4e32af853-1-removebg-preview.png" alt="Flow State Painting">
+          <p>Professional painting services delivering exceptional results across Tweed Heads to Evans Head. Quality, precision, and attention to detail in every project.</p>
         </div>
-    
-        <!-- Footer Bottom -->
-        <div class="footer-secondary">
+        
+        <div class="footer-section">
+          <h4>Opening Hours</h4>
+          <ul class="hours-list">
+            <li class="current-day"><span>Monday</span><span>8:00 AM - 5:00 PM</span></li>
+            <li><span>Tuesday</span><span>8:00 AM - 5:00 PM</span></li>
+            <li><span>Wednesday</span><span>8:00 AM - 5:00 PM</span></li>
+            <li><span>Thursday</span><span>8:00 AM - 5:00 PM</span></li>
+            <li><span>Friday</span><span>8:00 AM - 5:00 PM</span></li>
+            <li><span>Saturday</span><span>9:00 AM - 4:00 PM</span></li>
+            <li><span>Sunday</span><span>9:00 AM - 4:00 PM</span></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Contact</h4>
+          <ul class="contact-list">
+            <li><a href="tel:0459353449">0459 353 449</a></li>
+            <li><a href="mailto:contact@flowstatepainting.com.au">contact@flowstatepainting.com.au</a></li>
+            <li>Tweed Heads — Evans Head</li>
+            <li>ABN: 54 848 033 030</li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Location</h4>
+          <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d896296.058496125!2d153.4366986!3d-28.655033!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6e0171853a7286af%3A0x1e1210b9809e804e!2sFlow%20State%20Painting!5e0!3m2!1sen!2sau!4v1733469545074!5m2!1sen!2sau" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
         <div class="footer-bottom-content">
-            <div class="footer-left">
-                <span class="copyright">© 2024 Flow State Painting</span>
-            </div>
-            <div class="footer-center">
-                <div class="social-links">
-                    <a href="#" aria-label="Instagram">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="#" aria-label="Facebook">
-                        <i class="fab fa-facebook"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="footer-right">
-                <a href="/privacy">Privacy</a>
-                <a href="/terms">Terms</a>
-            </div>
+          <div class="copyright">
+            © 2024 Flow State Painting. All rights reserved.
+          </div>
+          <div class="social-links">
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+          </div>
         </div>
-        <div class="designer-signature">
-            <a href="https://www.astradesigns.info/" target="_blank" rel="noopener noreferrer">
-                Designed by Astra Designs
-            </a>
+      </div>
+      <div class="designer-signature">
+        <div class="signature-content">
+            <span>Created by</span>
+            <a href="https://www.astradesigns.info/" target="_blank" rel="noopener noreferrer">Astra Designs</a>
         </div>
     </div>
-    </footer>
-    
+
+    </div>
+  </footer>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/gsap.min.js"></script>
