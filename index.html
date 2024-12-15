@@ -931,12 +931,107 @@
     opacity: 0.3;
     }
     
-    .service-icon-wrapper {
+    /* Service Card Icon Fixes */
+.service-icon-wrapper {
     position: relative;
     width: 72px;
     height: 72px;
+    margin: 0 auto 24px; /* Center horizontally and add consistent bottom margin */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.service-card {
+    position: relative;
+    background: rgba(85, 59, 139, 0.02);
+    border: 1px solid rgba(85, 59, 139, 0.08);
+    border-radius: 12px;
+    padding: 40px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.service-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.service-title {
+    font-size: 20px;
+    color: var(--fsp-cream);
+    font-weight: 500;
+    letter-spacing: 0;
+    margin-bottom: 16px;
+}
+
+.service-description {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--fsp-purple-light);
+    opacity: 0.9;
     margin-bottom: 24px;
+    min-height: 72px;
+}
+
+.service-features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    text-align: left;
+}
+
+.service-features li {
+    position: relative;
+    padding-left: 24px;
+    margin-bottom: 12px;
+    color: var(--fsp-cream);
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+/* Ensure icon is centered within wrapper */
+.service-icon {
+    position: relative;
+    font-size: 28px;
+    color: var(--fsp-purple-light);
+    z-index: 2;
+}
+
+/* Fix background positioning */
+.icon-background {
+    position: absolute;
+    inset: 0;
+    border-radius: 16px;
+    background: linear-gradient(135deg, rgba(85, 59, 139, 0.1) 0%, rgba(139, 122, 176, 0.1) 100%);
+    backdrop-filter: blur(8px);
+    transform: rotate(45deg);
+    transition: transform 0.4s ease;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+    .service-card {
+        padding: 32px 24px;
     }
+    
+    .service-icon-wrapper {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 20px;
+    }
+    
+    .service-icon {
+        font-size: 24px;
+    }
+}
     
     .icon-background {
     position: absolute;
